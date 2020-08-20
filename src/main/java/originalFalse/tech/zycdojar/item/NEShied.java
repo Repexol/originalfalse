@@ -40,13 +40,13 @@ public class NEShied extends Item {
         if(event.getEntity() instanceof ServerPlayerEntity){
             ServerPlayerEntity player= (ServerPlayerEntity) event.getEntity();
             if(player.getHeldItem(Hand.OFF_HAND).getItem().equals(main.neshied)){
-                player.getHeldItem(Hand.OFF_HAND).setDamage(player.getHeldItem(Hand.OFF_HAND).getDamage()+1);
+                player.getHeldItem(Hand.OFF_HAND).setDamage(player.getHeldItem(Hand.OFF_HAND).getDamage()+5);
                 event.setCanceled(true);
             }
         }
     }
 
-    /*@Override
+    @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         if(!worldIn.isRemote){
             if(entityIn instanceof PlayerEntity){
@@ -60,7 +60,8 @@ public class NEShied extends Item {
                 }
             }
         }
-    }*
+    }
+    /*
 
     @SubscribeEvent
     public static void onTick(TickEvent event){
@@ -90,6 +91,7 @@ public class NEShied extends Item {
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        //tooltip.add(new TranslationTextComponent("originalfalse.text.sshied"));
+        tooltip.add(new TranslationTextComponent("originalfalse.tech.text.neshied"));
+        tooltip.add(new TranslationTextComponent("originalfalse.tech.text.naijiu",(stack.getMaxDamage()-stack.getDamage())+"/"+stack.getMaxDamage()));
     }
 }

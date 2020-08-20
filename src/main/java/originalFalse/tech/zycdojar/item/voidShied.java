@@ -39,6 +39,6 @@ public class voidShied extends Item {
     }
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        //tooltip.add(new TranslationTextComponent("originalfalse.text.sshied"));
+        tooltip.add(new TranslationTextComponent("originalfalse.tech.text.vshied"));
     }
 }

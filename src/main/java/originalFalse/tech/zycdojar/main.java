@@ -47,10 +47,13 @@ public class main {
         Item.Properties properties=new Item.Properties();
         properties.group(theGroup.gmy_group);
         properties.maxStackSize(64);
-        neshied=new NEShied(properties);
+        Item.Properties properties2=new Item.Properties();
+        properties2.group(theGroup.gmy_group);
+        properties2.maxDamage(666);
+        neshied=new NEShied(properties2);
         Set<Item> items=new HashSet<>();
         items.add(neshied);
-        voidshied=new voidShied(properties);
+        voidshied=new voidShied(properties2);
         items.add(voidshied);
         voidMeterial=new voidMeterial(properties);
         skjsdbfdj=new BlockItem(xukongjinshudabaifadianji,properties).setRegistryName(xukongjinshudabaifadianji.getRegistryName());

@@ -1,6 +1,8 @@
 package originalFalse.zycdojar.event;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.GameType;
@@ -48,24 +50,32 @@ public class adminTool {
     }
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onKill(AttackEntityEvent event){
-        main.LOGGER.info("ExecuteEvent");
-        String attacker=
-        event.getPlayer().getName().getString();
-            PlayerEntity entity=event.getPlayer();
+        if(event.getPlayer() instanceof ServerPlayerEntity) {
+            main.LOGGER.info("ExecuteEvent");
+            String attacker =
+                    event.getPlayer().getName().getString();
+            PlayerEntity entity = event.getPlayer();
             //entity.sendMessage(new StringTextComponent("TestMessage(UserName:"+attacker+")"));
-            if(entity.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.icon)){
+            if (entity.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.icon)) {
 
-                if(attacker.equalsIgnoreCase("Zycddj")||attacker.equalsIgnoreCase("Dev")){
+                if(entity.isSneaking()){
+                    event.getTarget().onKillCommand();
+                    event.getPlayer().sendMessage(new StringTextComponent("已造成无限伤害"));
+                }else {
+                    event.getTarget().attackEntityFrom(DamageSource.OUT_OF_WORLD,Float.MAX_VALUE);
+                }
+                /*if (attacker.equalsIgnoreCase("Zycddj") || attacker.equalsIgnoreCase("Dev")) {
                     entity.sendMessage(new StringTextComponent("断刃:已清除！"));
                     event.getTarget().onKillCommand();
-                }else if(event.getPlayer().getHeldItem(Hand.MAIN_HAND).getDamage()==1){
+                } else if (event.getPlayer().getHeldItem(Hand.MAIN_HAND).getDamage() == 1) {
                     event.getTarget().onKillCommand();
                     event.setCanceled(true);
-                }else{
+                }*//*else{
                     entity.sendMessage(new StringTextComponent("这把剑不属于你！"));
                     event.setCanceled(true);
                     event.getTarget().setMotion(event.getTarget().getPosX(),event.getTarget().getPosY()+20,event.getTarget().getPosZ());
-                }
+                }*/
             }
+        }
     }
 }

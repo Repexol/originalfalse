@@ -64,11 +64,16 @@
   "originalfalse.tech.text.pleaseSetOwner": "请使用已经设置主人的自然之息宝珠右键",
   "itemGroup.tech_addon": "源之假-科技拓展",
   "item.originalfalse.void_meterial": "虚空金属锭",
+  "item.originalfalse.ne_shield": "自然之盾",
+  "item.originalfalse.ne_shield": "虚空之盾",
   "item.originalfalse.dirt_gent": "泥土能发电机",
   "block.originalfalse.dirt_gent": "泥土能发电机",
   "originalfalse.tech.text.message": "自然之息:%s",
+  "originalfalse.tech.text.naijiu": "耐久：%s",
+  "originalfalse.tech.text.neshied": "会消耗自然之息回复耐久（1自然之息=10耐久），可抵挡一切伤害",
   "originalfalse.tech.text.noOwner": "请确定自然之息宝珠的主人",
   "originalfalse.tech.text.offline": "玩家已下线",
   "originalfalse.tech.text.noNE": "自然之息不足",
+  "originalfalse.tech.text.vshied": "可抵挡一切伤害（不消耗）",
   "originalfalse-tech-addon-start-end": "end"
 }
