@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: originalfalse
+Implementation-Version: 0.0.1
+Specification-Vendor: examplemodsareus
+Specification-Title: originalfalse
+Implementation-Timestamp: 2020-08-19T19:30:28+0800
+Specification-Version: 1
+Implementation-Vendor: examplemodsareus
+

@@ -1,0 +1,5 @@
+{
+  "loader": "forge:obj",
+  "model": "originalfalse:models/block/redic.obj",
+  "flip-v": true
+}

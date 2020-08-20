@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "=#=",
+    "#?#",
+    "###"
+  ],
+  "key": {
+    "?": {
+      "item": "minecraft:paper"
+    },
+  "#": {
+    "item": "minecraft:redstone"
+  },
+    "=": {
+      "item": "originalfalse:gwi"
+    }
+  },
+  "result": {
+    "item": "originalfalse:paper",
+    "count": 16
+  }
+}

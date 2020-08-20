@@ -1,0 +1,6 @@
+# Made in Blockbench 3.4.2
+newmtl 0
+map_Kd originalfalse:blocks/crystal/maincrystal.png 
+newmtl 1
+map_Kd originalfalse:blocks/crystal/smallcrystal.png 
+newmtl none

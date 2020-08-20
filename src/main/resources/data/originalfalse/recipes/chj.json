@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "=#=",
+    "#?=",
+    "#=#"
+  ],
+  "key": {
+    "?": {
+      "item": "minecraft:diamond"
+    },
+  "#": {
+    "item": "minecraft:redstone"
+  },
+    "=": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "originalfalse:chj",
+    "count": 16
+  }
+}

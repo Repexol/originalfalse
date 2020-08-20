@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "???",
+    "#*#",
+    "#*#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:air"
+    },
+    "?": {
+      "item": "minecraft:nether_star"
+    },
+    "*": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "originalfalse:neitherstar_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "===",
+    "=#?",
+    "=!="
+  ],
+  "key": {
+    "?": {
+      "item": "originalfalse:furen"
+    },
+    "!": {
+      "item": "originalfalse:bladed_root"
+    },
+    "#": {
+      "item": "originalfalse:blade_core"
+    },
+    "=": {
+      "item": "minecraft:air"
+    }
+  },
+  "result": {
+    "item": "originalfalse:blade",
+    "count": 1
+  }
+}
