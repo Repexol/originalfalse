@@ -86,6 +86,9 @@ public class wand extends Item {
                     return spell;
                 }
             }
+            if (Math.abs(new Random().nextInt())%10<=1){
+                return "null";
+            }
         }
     }
 }

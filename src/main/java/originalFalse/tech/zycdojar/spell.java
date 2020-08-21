@@ -4,7 +4,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import originalFalse.tech.zycdojar.api.wrapper.NESystem;
@@ -18,6 +21,10 @@ public class spell implements spellHandle {
             return true;
         }else if(spell.equals("AngerOfNatural")){
             if(NESystem.removeNE(player,10)) {
+                RayTraceResult result=player.getServerWorld().rayTraceBlocks(new RayTraceContext(player.getPositionVec(),player.getLookVec(), RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE,player));
+                Vec3d obj=result.getHitVec();
+                BlockPos pos=new BlockPos(obj.getX(),obj.getY(),obj.getZ());
+                player.sendMessage(new StringTextComponent(player.getServerWorld().getBlockState(pos).getBlock().getNameTextComponent().getString()));
                 LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(target.getEntityWorld(), target.getPosX(), target.getPosY(), target.getPosZ(), false);
                 lightningBoltEntity.setFire(999);
                 target.removePotionEffect(Effects.FIRE_RESISTANCE);
