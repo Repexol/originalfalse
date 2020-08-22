@@ -9,10 +9,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import originalFalse.tech.zycdojar.block.*;
-import originalFalse.tech.zycdojar.block.tile.dengjiajiaohuanyiTile;
-import originalFalse.tech.zycdojar.block.tile.lightingTile;
-import originalFalse.tech.zycdojar.block.tile.nituFadianjiTile;
-import originalFalse.tech.zycdojar.block.tile.teleporterTile;
+import originalFalse.tech.zycdojar.block.tile.*;
+import originalFalse.tech.zycdojar.block.xukongjinshudabaifadianji;
 import originalFalse.tech.zycdojar.item.NEShied;
 import originalFalse.tech.zycdojar.item.group.theGroup;
 import originalFalse.tech.zycdojar.item.pearl;
@@ -37,6 +35,8 @@ public class main {
     public static Block xukongjinshudabaifadianji;
     public static Block teleporter;
     public static Item teleporterI;
+    public static Block wuzhongshenyouyishi;
+    public static Item wuzhongshenyouyishiI;
     public static Item skjsdbfdj;
     public static Item neshied;
     public static Item voidshied;
@@ -68,6 +68,8 @@ public class main {
             dengjiajiaohuanyi = new dengjiajiaohuanyi();
             dengjiajiaohuanyiI = new BlockItem(dengjiajiaohuanyi, properties).setRegistryName(dengjiajiaohuanyi.getRegistryName());
         }
+        wuzhongshenyouyishiI=new BlockItem(wuzhongshenyouyishi,properties).setRegistryName("wu_zhong_shen_you_yi_shi");
+        items.add(wuzhongshenyouyishiI);
         items.add(dengjiajiaohuanyiI);
         skjsdbfdj=new BlockItem(xukongjinshudabaifadianji,properties).setRegistryName(xukongjinshudabaifadianji.getRegistryName());
         items.add(skjsdbfdj);
@@ -87,6 +89,7 @@ public class main {
         Item.Properties properties=new Item.Properties();
         properties.group(theGroup.gmy_group);
         properties.maxStackSize(64);
+        wuzhongshenyouyishi=new wuzhongshenyouyishi();
         Item.Properties properties2=new Item.Properties();
         properties2.group(theGroup.gmy_group);
         properties2.maxDamage(666);
@@ -95,6 +98,7 @@ public class main {
             dengjiajiaohuanyi = new dengjiajiaohuanyi();
             dengjiajiaohuanyiI = new BlockItem(dengjiajiaohuanyi, properties).setRegistryName(dengjiajiaohuanyi.getRegistryName());
         }
+        items.add(wuzhongshenyouyishi);
         items.add(dengjiajiaohuanyi);
         teleporter=new teleporter();
         xukongjinshudabaifadianji=new xukongjinshudabaifadianji();
@@ -116,6 +120,7 @@ public class main {
         tileEntityTypes.add(dengjiajiaohuanyiTile.type);
         tileEntityTypes.add(teleporterTile.type);
         tileEntityTypes.add(lightingTile.type);
+        tileEntityTypes.add(mawoderendoushidashabi.type);
         tileEntityTypes.add(originalFalse.tech.zycdojar.block.tile.xukongjinshudabaifadianji.type);
         for(TileEntityType<?> type:tileEntityTypes){
             event.getRegistry().register(type);

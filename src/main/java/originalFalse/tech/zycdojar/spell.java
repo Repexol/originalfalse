@@ -21,10 +21,6 @@ public class spell implements spellHandle {
             return true;
         }else if(spell.equals("AngerOfNatural")){
             if(NESystem.removeNE(player,10)) {
-                RayTraceResult result=player.getServerWorld().rayTraceBlocks(new RayTraceContext(player.getPositionVec(),player.getLookVec(), RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE,player));
-                Vec3d obj=result.getHitVec();
-                BlockPos pos=new BlockPos(obj.getX(),obj.getY(),obj.getZ());
-                player.sendMessage(new StringTextComponent(player.getServerWorld().getBlockState(pos).getBlock().getNameTextComponent().getString()));
                 LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(target.getEntityWorld(), target.getPosX(), target.getPosY(), target.getPosZ(), false);
                 lightningBoltEntity.setFire(999);
                 target.removePotionEffect(Effects.FIRE_RESISTANCE);
@@ -32,6 +28,12 @@ public class spell implements spellHandle {
             }else {
                 player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.noNE"));
             }
+            return true;
+        }else if(spell.equals("scan")){
+            RayTraceResult result=player.getServerWorld().rayTraceBlocks(new RayTraceContext(player.getPositionVec().add(0,1,0),player.getLookVec(), RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE,player));
+            Vec3d obj=result.getHitVec();
+            BlockPos pos=new BlockPos(obj.getX(),obj.getY(),obj.getZ());
+            player.sendMessage(new StringTextComponent(player.getServerWorld().getBlockState(pos).getBlock().getNameTextComponent().getString()));
             return true;
         }
         return false;

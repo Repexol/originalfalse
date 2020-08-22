@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/leaf/zycdojar/entity/leaf.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/superTool/zycdojar/item/sword.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/superTool/zycdojar/spell/handle.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/tech/zycdojar/block/teleporter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/tech/zycdojar/client/main.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/tech/zycdojar/data/techSaveData.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/tech/zycdojar/item/blockItem/nitunengfadianji.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/tech/zycdojar/spell.java" charset="GBK" />
@@ -17,6 +19,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/zycdojar/item/spellStuder.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/zycdojar/item/superItem.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/zycdojar/item/wand.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/originalFalse/zycdojar/playerJoin.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/resources/assets/originalfalse/lang/zh_cn.json" charset="UTF-8" />
   </component>
 </project>
