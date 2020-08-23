@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import originalFalse.tech.zycdojar.api.wrapper.NESystem;
 import originalFalse.zycdojar.event.dataCenter.worldSaveData;
 
 import java.util.HashMap;
@@ -19,12 +20,21 @@ public class LevelSystem {
         worldSaveData data=worldSaveData.getInstance(world);
         return data.getLevel(entity);
     }
+    private static int ticks=0;
     @SubscribeEvent
     public static void tickWrapper(TickEvent event){
         if(worldSaveData.overWorld==null){
         }else {
             if((Math.abs(new Random().nextInt())%100)>=98)
             tick(worldSaveData.overWorld);
+            if(ticks==5) {
+                for (ServerPlayerEntity playerEntity : worldSaveData.overWorld.getServer().getPlayerList().getPlayers()) {
+                    LevelSender.sendData(playerEntity);
+                }
+                ticks=0;
+            }else {
+                ticks++;
+            }
         }
     }
     private static final Map<Integer,Integer> upLevel=new HashMap<>();
@@ -76,7 +86,7 @@ public class LevelSystem {
         }
     }
     public static void send(World worldIn,PlayerEntity player){
-        if(player instanceof ServerPlayerEntity) {
+        if(player instanceof ServerPlayerEntity&&(!worldIn.isRemote)) {
             worldSaveData data = worldSaveData.get(worldIn);
             player.sendMessage(new TranslationTextComponent("originalfalse.text.levelshow", "" + data.getLevel(player)));
             player.sendMessage(new TranslationTextComponent("originalfalse.text.expshow", "" + data.getExp(player)));
@@ -87,6 +97,12 @@ public class LevelSystem {
             for (messageHandle handle : worldSaveData.messageHandles) {
                 handle.send((ServerPlayerEntity) player);
             }
+        }else {
+            player.sendMessage(new TranslationTextComponent("originalfalse.text.levelshow", "" + client.level));
+            player.sendMessage(new TranslationTextComponent("originalfalse.text.expshow", "" + client.exp));
+            player.sendMessage(new TranslationTextComponent("originalfalse.text.manashow", "" + client.mana, 20 + (client.level * 10) + ""));
+            player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.message", client.ne));
+
         }
     }
 }

@@ -41,6 +41,7 @@ public class dengjiajiaohuanyiTile extends TileEntity {
     }
 
 
+
     @Override
     public void read(CompoundNBT compound) {
         ListNBT nbt= (ListNBT) compound.get("bilibiliTheRepexolStudio");

@@ -23,17 +23,23 @@ public class wuzhongshenyouyishi extends TileEntityRenderer<mawoderendoushidasha
     @Override
     public void render(mawoderendoushidashabi tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
         matrixStackIn.push();
-        matrixStackIn.translate(0,0.6,0);
+        matrixStackIn.translate(0,3,0);
         BlockRendererDispatcher blockRenderer= Minecraft.getInstance().getBlockRendererDispatcher();
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        ItemStack stack=ItemStack.read(tileEntityIn.getTileData().getCompound("item"));
-        /*itemRenderer.renderItem(stack,
+        BlockState state=Blocks.BEACON.getDefaultState();
+        if(tileEntityIn.check())
+        blockRenderer.renderBlock(state,matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn,EmptyModelData.INSTANCE);
+        matrixStackIn.pop();
+        /*blockRenderer.renderItem(stack,
                 matrixStackIn,
                 bufferIn,
                 combinedLightIn,
                 combinedOverlayIn,
                 EmptyModelData.INSTANCE);
          */
+        matrixStackIn.push();
+        matrixStackIn.translate(0.5,0.8,0.5);
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        ItemStack stack=ItemStack.read(tileEntityIn.getTileData().getCompound("item"));
         IBakedModel ibakedmodel = itemRenderer.getItemModelWithOverrides(stack, tileEntityIn.getWorld(), null);
         itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn, ibakedmodel);
         matrixStackIn.pop();

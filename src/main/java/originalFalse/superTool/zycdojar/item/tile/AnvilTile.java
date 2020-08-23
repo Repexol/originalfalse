@@ -56,6 +56,10 @@ public class AnvilTile extends TileEntity {
     }
     public void clear(){
         items=new HashMap<>();
+        items.putIfAbsent("yezi_and_tangyauN(Anran)_is_a_good_uploader,but_they_are_pigeons", 0);
+        items.putIfAbsent("iron", 0);
+        items.putIfAbsent("RTX_please", 0);
+        items.putIfAbsent("Author.Zycdojar(qq.3321019091)", 0);
         markDirty();
     }
     public boolean get(ItemStack design){

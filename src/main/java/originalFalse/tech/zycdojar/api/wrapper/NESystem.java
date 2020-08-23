@@ -13,7 +13,7 @@ public class NESystem {
     }
     public static void grantNE(PlayerEntity playerEntity,int amount){
         techSaveData data=techSaveData.getInstance(worldSaveData.overWorld);
-        if(data.getNat(playerEntity)<=1000) {
+        if(data.getNat(playerEntity)<1000) {
             data.putNat(playerEntity, data.getNat(playerEntity) + amount);
         }
     }
