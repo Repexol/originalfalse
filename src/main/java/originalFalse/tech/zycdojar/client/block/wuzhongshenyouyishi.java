@@ -1,6 +1,7 @@
 package originalFalse.tech.zycdojar.client.block;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
@@ -12,6 +13,7 @@ import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.model.data.EmptyModelData;
 import originalFalse.tech.zycdojar.block.tile.mawoderendoushidashabi;
 
@@ -29,6 +31,15 @@ public class wuzhongshenyouyishi extends TileEntityRenderer<mawoderendoushidasha
         if(tileEntityIn.check())
         blockRenderer.renderBlock(state,matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn,EmptyModelData.INSTANCE);
         matrixStackIn.pop();
+        if(!tileEntityIn.check()){
+            int[][] struct={{3,0,0},{-3,0,0},{0,0,-3},{0,0,3},{2,0,2},{2,0,-2},{-2,0,2},{-2,0,-2},{0,-1,0},{-1,-1,-1},{1,-1,1},{-1,-1,1},{1,-1,-1},{0,-1,-1},{-1,-1,0}
+                    ,{0,-1,1},{1,-1,0}};
+            for(int[] str:struct) {
+                BlockPos pos = new BlockPos(str[0],str[1],str[2]);
+                if(!tileEntityIn.getWorld().getBlockState(tileEntityIn.getPos().add(str[0],str[1],str[2])).getBlock().equals(Blocks.DIAMOND_ORE))
+                rend(pos,Blocks.DIAMOND_ORE.getDefaultState(),matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn);
+            }
+        }
         /*blockRenderer.renderItem(stack,
                 matrixStackIn,
                 bufferIn,
@@ -42,6 +53,14 @@ public class wuzhongshenyouyishi extends TileEntityRenderer<mawoderendoushidasha
         ItemStack stack=ItemStack.read(tileEntityIn.getTileData().getCompound("item"));
         IBakedModel ibakedmodel = itemRenderer.getItemModelWithOverrides(stack, tileEntityIn.getWorld(), null);
         itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED, true, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn, ibakedmodel);
+        matrixStackIn.pop();
+    }
+
+    public void rend(BlockPos pos, BlockState state, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn){
+        matrixStackIn.push();
+        matrixStackIn.translate(pos.getX(),pos.getY(),pos.getZ());
+        BlockRendererDispatcher blockRenderer= Minecraft.getInstance().getBlockRendererDispatcher();
+        blockRenderer.renderBlock(state,matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn,EmptyModelData.INSTANCE);
         matrixStackIn.pop();
     }
 }

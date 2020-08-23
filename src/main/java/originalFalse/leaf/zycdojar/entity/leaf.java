@@ -3,6 +3,8 @@ package originalFalse.leaf.zycdojar.entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.boss.WitherEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.monster.WitchEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.DamageSource;
@@ -10,8 +12,8 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class leaf extends MobEntity {
-    public leaf(EntityType<? extends MobEntity> type, World worldIn) {
+public class leaf extends MonsterEntity {
+    public leaf(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
         //this.goalSelector.addGoal(0,new goal(this));
         this.goalSelector.addGoal(0,new goal(this));

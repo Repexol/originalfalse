@@ -2,6 +2,7 @@ package originalFalse.tech.zycdojar.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -58,6 +59,11 @@ public class wuzhongshenyouyishi extends Block {
                     if(NESystem.removeNE(player,1000)){
                         player.addItemStackToInventory(ItemStack.read(data.getCompound("item")));
                         player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));stack.setCount(stack.getCount()-1);
+                        /*int structs[][]={{0,-1,0},{-1,-1,-1},{1,-1,1},{-1,-1,1},{1,-1,-1},{0,-1,-1},{-1,-1,0}
+                                ,{0,-1,1},{1,-1,0}};
+                        for(int[] line:structs){
+                            worldIn.setBlockState(new BlockPos(line[0],line[1],line[2]), Blocks.AIR.getDefaultState());
+                        }*/
                     }
                 }else {
                     if(!ItemStack.read(data.getCompound("item")).isEmpty())

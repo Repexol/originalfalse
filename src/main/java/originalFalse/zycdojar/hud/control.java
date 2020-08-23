@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
@@ -17,21 +18,10 @@ import originalFalse.zycdojar.api.wrapper.LevelSystem;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class control {
-    public static KeyBinding key=new KeyBinding("key.levelsystem",
-            KeyConflictContext.IN_GAME,
-            KeyModifier.CONTROL,
-            InputMappings.Type.KEYSYM,
-            GLFW.GLFW_KEY_R,
-            "key.category.levelsystem");
     @SubscribeEvent
-    public static void onKeyboard(InputEvent.KeyInputEvent event){
-        if(key.isPressed()){
-            ClientPlayerEntity player= Minecraft.getInstance().player;
-            LevelSystem.send(player.getEntityWorld(),player);
+    public static void onClientSetup(InputEvent.KeyInputEvent event) {
+        if(event.getKey()==82){
+            LevelSystem.send(Minecraft.getInstance().world,Minecraft.getInstance().player);
         }
-    }
-    @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
-        ClientRegistry.registerKeyBinding(key);
     }
 }
