@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.model.data.EmptyModelData;
 import originalFalse.tech.zycdojar.block.tile.mawoderendoushidashabi;
@@ -32,12 +34,14 @@ public class wuzhongshenyouyishi extends TileEntityRenderer<mawoderendoushidasha
         blockRenderer.renderBlock(state,matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn,EmptyModelData.INSTANCE);
         matrixStackIn.pop();
         if(!tileEntityIn.check()){
-            int[][] struct={{3,0,0},{-3,0,0},{0,0,-3},{0,0,3},{2,0,2},{2,0,-2},{-2,0,2},{-2,0,-2},{0,-1,0},{-1,-1,-1},{1,-1,1},{-1,-1,1},{1,-1,-1},{0,-1,-1},{-1,-1,0}
-                    ,{0,-1,1},{1,-1,0}};
-            for(int[] str:struct) {
-                BlockPos pos = new BlockPos(str[0],str[1],str[2]);
-                if(!tileEntityIn.getWorld().getBlockState(tileEntityIn.getPos().add(str[0],str[1],str[2])).getBlock().equals(Blocks.DIAMOND_ORE))
-                rend(pos,Blocks.DIAMOND_ORE.getDefaultState(),matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn);
+            if(Minecraft.getInstance().player.getHeldItem(Hand.MAIN_HAND).getItem().equals(Items.STICK)) {
+                int[][] struct = {{3, 0, 0}, {-3, 0, 0}, {0, 0, -3}, {0, 0, 3}, {2, 0, 2}, {2, 0, -2}, {-2, 0, 2}, {-2, 0, -2}, {0, -1, 0}, {-1, -1, -1}, {1, -1, 1}, {-1, -1, 1}, {1, -1, -1}, {0, -1, -1}, {-1, -1, 0}
+                        , {0, -1, 1}, {1, -1, 0}};
+                for (int[] str : struct) {
+                    BlockPos pos = new BlockPos(str[0], str[1], str[2]);
+                    if (!tileEntityIn.getWorld().getBlockState(tileEntityIn.getPos().add(str[0], str[1], str[2])).getBlock().equals(Blocks.DIAMOND_ORE))
+                        rend(pos, Blocks.DIAMOND_ORE.getDefaultState(), matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+                }
             }
         }
         /*blockRenderer.renderItem(stack,

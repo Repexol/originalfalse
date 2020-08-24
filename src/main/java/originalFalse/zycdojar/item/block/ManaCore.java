@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.StringNBT;
@@ -14,6 +15,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import originalFalse.tech.zycdojar.main;
 import originalFalse.zycdojar.api.wrapper.LevelSystem;
 import originalFalse.zycdojar.event.registyevent.itemregister;
 
@@ -37,7 +39,7 @@ public class ManaCore extends Block {
                     player.sendMessage(new TranslationTextComponent("originalfalse.text.manaing"));
                 }
                 //worldIn.createExplosion(player,4,4,4,4, Explosion.Mode.DESTROY);
-            }if(player.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.paper)){
+            }else if(player.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.paper)){
                 String spellName=randomSpell();
                 ItemStack item=new ItemStack(itemregister.spellBook,1);
                 item.getOrCreateTag().put("spellbook", StringNBT.valueOf(spellName));
@@ -48,6 +50,21 @@ public class ManaCore extends Block {
                     player.setHeldItem(Hand.MAIN_HAND, new ItemStack(Items.AIR));
                     player.sendMessage(new TranslationTextComponent("originalfalse.text.noneBook"));
                 }
+            }else if(player.getHeldItem(handIn).getItem().equals(itemregister.superShield)){
+                if(LevelSystem.removeMana(player,233,worldIn))
+                player.setHeldItem(handIn,new ItemStack(main.neshied,1));
+            }else if(player.getHeldItem(handIn).getItem().equals(Items.ENDER_EYE)){
+                if(LevelSystem.removeMana(player,233,worldIn))
+                player.setHeldItem(handIn,new ItemStack(main.pearl,1));
+            }else if(player.getHeldItem(handIn).getItem().equals(itemregister.ManaCorei)){
+                if(LevelSystem.removeMana(player,233,worldIn))
+                    player.setHeldItem(handIn,new ItemStack(main.dengjiajiaohuanyiI,1));
+            }else if(player.getHeldItem(handIn).getItem().equals(Items.DIRT)){
+                if(LevelSystem.removeMana(player,233,worldIn))
+                    player.setHeldItem(handIn,new ItemStack(main.nitunengfadianjiI,1));
+            }else if(player.getHeldItem(handIn).getItem().equals(Items.FLINT)){
+                if(LevelSystem.removeMana(player,233,worldIn))
+                    player.setHeldItem(handIn,new ItemStack(main.lightingI,1));
             }
         }
         return ActionResultType.SUCCESS;

@@ -76,12 +76,29 @@ public class dengjiajiaohuanyi extends Block {
                                         result.put("mana", 100);
                                         result.put("stack", new ItemStack(Items.DIAMOND, 1));
                                         throw new gotoExcaption(result);
+                                    }else if(map.getOrDefault(main.neshied,0)==1){
+                                        if(map.getOrDefault(main.voidMeterial,0)==2) {
+                                            Map result = new HashMap();
+                                            result.put("mana", 200);
+                                            result.put("stack", new ItemStack(main.voidshied, 1));
+                                            throw new gotoExcaption(result);
+                                        }
+                                    }else if(map.getOrDefault(itemregister.getSSBI,0)==1){
+                                            Map result = new HashMap();
+                                            result.put("mana", 200);
+                                            result.put("stack", new ItemStack(main.wuzhongshenyouyishiI, 1));
+                                            throw new gotoExcaption(result);
+                                    }else if(map.getOrDefault(Items.ENDER_PEARL,0)==1){
+                                        Map result = new HashMap();
+                                        result.put("mana", 200);
+                                        result.put("stack", new ItemStack(main.teleporterI, 1));
+                                        throw new gotoExcaption(result);
                                     }
                                 }catch (gotoExcaption excaption){
 
                                     if (NESystem.removeNE(player, (Integer) excaption.data.get("mana"))) {
                                         player.addItemStackToInventory((ItemStack) excaption.data.get("stack"));
-                                        tile.stacks = new HashSet<>();
+                                        tile.items=new HashMap<>();
                                         tile.markDirty();
                                         player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
                                     }

@@ -17,15 +17,14 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootContext;
+import originalFalse.tech.zycdojar.main;
 import originalFalse.zycdojar.api.wrapper.LevelSystem;
 import originalFalse.zycdojar.event.registyevent.itemregister;
 import originalFalse.zycdojar.item.block.gssb.crafting.craft;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class getSilverSpellsBox extends Block {
     public Set<ItemStack> yss=new HashSet<>();
@@ -85,5 +84,12 @@ public class getSilverSpellsBox extends Block {
             }
         }
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        List<ItemStack> list=new ArrayList<>();
+        list.add(new ItemStack(main.voidMeterial));
+        return list;
     }
 }

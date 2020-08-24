@@ -21,8 +21,8 @@ import java.util.Set;
 public class dengjiajiaohuanyiTile extends TileEntity {
     public Set<ItemStack> stacks=new HashSet<>();
     public Map<Item,Integer> items=new HashMap<>();
-    public static TileEntityType<?> type=
-            TileEntityType.Builder.create(()->{return new dengjiajiaohuanyiTile();}, main.dengjiajiaohuanyi).build(null).setRegistryName(main.dengjiajiaohuanyi.getRegistryName());
+    public static TileEntityType<dengjiajiaohuanyiTile> type=
+            (TileEntityType<dengjiajiaohuanyiTile>) TileEntityType.Builder.create(()->{return new dengjiajiaohuanyiTile();}, main.dengjiajiaohuanyi).build(null).setRegistryName(main.dengjiajiaohuanyi.getRegistryName());
     public dengjiajiaohuanyiTile() {
         super(type);
     }
@@ -32,8 +32,10 @@ public class dengjiajiaohuanyiTile extends TileEntity {
         for(int[] str:struct){
             BlockPos pos=this.pos.add(str[0],str[1],str[2]);
             if(!world.getBlockState(pos).getBlock().equals(itemregister.ManaCore)){
-                tip.sendMessage(new StringTextComponent("error at "+pos.getX()+" "+pos.getY()+" "+pos.getZ()));
-                tip.attemptTeleport(pos.getX(),pos.getY(),pos.getZ(),true);
+                if(tip!=null) {
+                    tip.sendMessage(new StringTextComponent("error at " + pos.getX() + " " + pos.getY() + " " + pos.getZ()));
+                    tip.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
+                }
                 flag=false;
             }
         }

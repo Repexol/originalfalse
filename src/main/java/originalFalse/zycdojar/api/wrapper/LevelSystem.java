@@ -70,6 +70,7 @@ public class LevelSystem {
         }
         if(LevelSystem.mana.get(entity.getUniqueID().toString())>=mana){
             LevelSystem.mana.put(entity.getUniqueID().toString(),LevelSystem.mana.get(entity.getUniqueID().toString())-mana);
+            LevelSystem.grantExp(entity, mana/5,worldIn);
             return true;
         }else {
             entity.setHealth(entity.getHealth()-5);

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "=!=",
+    "!#!",
+    "=!="
+  ],
+  "key": {
+    "!": {
+      "item": "originalfalse:void_meterial"
+    },
+    "#": {
+      "item": "originalfalse:wu_zhong_shen_you_yi_shi"
+    },
+    "=": {
+      "item": "minecraft:air"
+    }
+  },
+  "result": {
+    "item": "originalfalse:xu_kong_jin_shu_da_bai_fa_dian_ji",
+    "count": 1
+  }
+}
