@@ -16,10 +16,19 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber
 public class LevelSystem {
+    public static void initMana(String UUID){
+        mana.putIfAbsent(UUID,20 + (getLevel(UUID,worldSaveData.overWorld) * 10));
+        markSync();
+    }
     public static int getLevel(PlayerEntity entity, World world){
         worldSaveData data=worldSaveData.getInstance(world);
         return data.getLevel(entity);
     }
+    public static int getLevel(String entity, World world){
+        worldSaveData data=worldSaveData.getInstance(world);
+        return data.getLevel(entity);
+    }
+    private static boolean markSync=false;
     private static int ticks=0;
     @SubscribeEvent
     public static void tickWrapper(TickEvent event){
@@ -28,14 +37,20 @@ public class LevelSystem {
             if((Math.abs(new Random().nextInt())%100)>=98)
             tick(worldSaveData.overWorld);
             if(ticks==5) {
-                for (ServerPlayerEntity playerEntity : worldSaveData.overWorld.getServer().getPlayerList().getPlayers()) {
-                    LevelSender.sendData(playerEntity);
+                if(markSync) {
+                    for (ServerPlayerEntity playerEntity : worldSaveData.overWorld.getServer().getPlayerList().getPlayers()) {
+                        LevelSender.sendData(playerEntity);
+                    }
+                    markSync=false;
                 }
                 ticks=0;
             }else {
                 ticks++;
             }
         }
+    }
+    public static void markSync(){
+        markSync=true;
     }
     private static final Map<Integer,Integer> upLevel=new HashMap<>();
     //private static Map<Integer,String> levelAlies=new HashMap<>();
@@ -59,6 +74,7 @@ public class LevelSystem {
                 for(PlayerEntity player:worldIn.getPlayers()){
                     player.sendMessage(new TranslationTextComponent("originalfalse.text.level",entity.getName().getString(),data.getLevel(entity)));
                 }
+                markSync();
             }
         }
     }
@@ -71,6 +87,7 @@ public class LevelSystem {
         if(LevelSystem.mana.get(entity.getUniqueID().toString())>=mana){
             LevelSystem.mana.put(entity.getUniqueID().toString(),LevelSystem.mana.get(entity.getUniqueID().toString())-mana);
             LevelSystem.grantExp(entity, mana/5,worldIn);
+            markSync();
             return true;
         }else {
             entity.setHealth(entity.getHealth()-5);
@@ -98,6 +115,7 @@ public class LevelSystem {
             for (messageHandle handle : worldSaveData.messageHandles) {
                 handle.send((ServerPlayerEntity) player);
             }
+            markSync();
         }else {
             player.sendMessage(new TranslationTextComponent("originalfalse.text.levelshow", "" + client.level));
             player.sendMessage(new TranslationTextComponent("originalfalse.text.expshow", "" + client.exp));

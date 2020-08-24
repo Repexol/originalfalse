@@ -40,8 +40,20 @@ public class worldSaveData extends WorldSavedData {
         }
         return level.get(uuid);
     }
+    public int getLevel(String player){
+        markDirty();
+        String uuid=player;
+        if(level.get(uuid)==null){
+            setLevel(player,0);
+        }
+        return level.get(uuid);
+    }
     public void setLevel(PlayerEntity entity,int level){
         this.level.put(entity.getUniqueID().toString(),level);
+        markDirty();
+    }
+    public void setLevel(String entity,int level){
+        this.level.put(entity,level);
         markDirty();
     }
     public int getExp(PlayerEntity player){

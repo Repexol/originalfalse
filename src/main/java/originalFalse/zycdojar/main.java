@@ -1,7 +1,9 @@
 package originalFalse.zycdojar;
 
+import com.google.gson.JsonObject;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,6 +18,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import originalFalse.zycdojar.api.wrapper.LevelSystem;
+import originalFalse.zycdojar.api.wrapper.RequestHandle;
+import originalFalse.zycdojar.api.wrapper.RequestManager;
+import originalFalse.zycdojar.api.wrapper.client;
 import originalFalse.zycdojar.item.block.ManaCore;
 
 import java.util.Random;
@@ -46,6 +51,31 @@ public class main
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        RequestManager.registerHandle(new RequestHandle() {
+            @Override
+            public boolean handle(JsonObject object) {
+                return false;
+            }
+
+            @Override
+            public JsonObject getState() {
+                JsonObject object=new JsonObject();
+                if(client.mana==0){
+                    object.addProperty("reloadMana",true);
+                    object.addProperty("uuid", Minecraft.getInstance().player.getUniqueID().toString());
+                }else {
+                    object.addProperty("reloadMana",false);
+                }
+                return object;
+            }
+
+            @Override
+            public void handleState(JsonObject object) {
+                if(object.get("reloadMana").getAsBoolean()){
+                    LevelSystem.initMana(object.get("uuid").getAsString());
+                }
+            }
+        },"levelReturn");
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());

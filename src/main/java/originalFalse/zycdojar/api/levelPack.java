@@ -12,9 +12,12 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.lwjgl.system.CallbackI;
 import originalFalse.tech.zycdojar.api.wrapper.NESystem;
+import originalFalse.zycdojar.api.client.ClientRequest;
 import originalFalse.zycdojar.api.wrapper.LevelSystem;
+import originalFalse.zycdojar.api.wrapper.RequestManager;
 import originalFalse.zycdojar.api.wrapper.client;
 import originalFalse.zycdojar.event.dataCenter.worldSaveData;
+import originalFalse.zycdojar.main;
 
 import java.util.Properties;
 import java.util.function.Supplier;
@@ -59,6 +62,10 @@ public class levelPack {
             client.level=level;
             client.mana=mana;
             client.ne=ne;
+            if(mana==0){
+                main.LOGGER.info("OKAY to request initial mana");
+                RequestManager.send();
+            }
         });
         ctx.get().setPacketHandled(true);
     }

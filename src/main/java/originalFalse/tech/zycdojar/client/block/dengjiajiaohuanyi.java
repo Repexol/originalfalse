@@ -35,7 +35,7 @@ public class dengjiajiaohuanyi extends TileEntityRenderer<dengjiajiaohuanyiTile>
         blockRenderer.renderBlock(state,matrixStackIn,bufferIn,combinedLightIn,combinedOverlayIn,EmptyModelData.INSTANCE);
         matrixStackIn.pop();
         if(!tileEntityIn.check(null)){
-            if(Minecraft.getInstance().player.getHeldItem(Hand.MAIN_HAND).getItem().equals(Items.STICK)) {
+            if(Minecraft.getInstance().player.getHeldItem(Hand.OFF_HAND).getItem().equals(Items.STICK)) {
                 int[][] struct = {{2, 1, 0}, {2, 0, 0}, {-2, 1, 0}, {-2, 0, 0}, {0, 1, -2}, {0, 0, -2}, {0, 0, 2}, {0, 1, 2}};
                 for (int[] str : struct) {
                     BlockPos pos = new BlockPos(str[0], str[1], str[2]);

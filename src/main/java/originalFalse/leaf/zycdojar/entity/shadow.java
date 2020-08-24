@@ -9,7 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class shadow extends MobRenderer<leaf, PlayerModel<leaf>> {
     public shadow(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new PlayerModel<leaf>(1,false), 1.5F);
+        super(renderManagerIn, new PlayerModel<leaf>(1,true), 1.5F);
     }
 
     @Override
