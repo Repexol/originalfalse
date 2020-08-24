@@ -62,10 +62,7 @@ public class levelPack {
             client.level=level;
             client.mana=mana;
             client.ne=ne;
-            if(mana==0){
-                main.LOGGER.info("OKAY to request initial mana");
-                RequestManager.send();
-            }
+            RequestManager.send();
         });
         ctx.get().setPacketHandled(true);
     }
