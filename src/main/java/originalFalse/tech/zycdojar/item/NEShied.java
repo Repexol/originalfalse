@@ -28,6 +28,9 @@ import originalFalse.zycdojar.event.registyevent.itemregister;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * 自然之盾
+ */
 @Mod.EventBusSubscriber
 public class NEShied extends Item {
     public NEShied(Properties properties) {
@@ -35,6 +38,10 @@ public class NEShied extends Item {
         setRegistryName("ne_shield");
     }
 
+    /**
+     * 受伤的时候小号耐久抵挡
+     * @param event
+     */
     @SubscribeEvent
     public static void onAttact(LivingDamageEvent event){
         if(event.getEntity() instanceof ServerPlayerEntity){
@@ -46,6 +53,14 @@ public class NEShied extends Item {
         }
     }
 
+    /**
+     * 尝试消耗自然之息回复耐久
+     * @param stack
+     * @param worldIn
+     * @param entityIn
+     * @param itemSlot
+     * @param isSelected
+     */
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         if(!worldIn.isRemote){
@@ -75,20 +90,32 @@ public class NEShied extends Item {
         }
     }*/
 
+    /**
+     * 右键强制回复耐久
+     * @param worldIn
+     * @param playerIn
+     * @param handIn
+     * @return
+     */
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         PlayerEntity player= playerIn;
         ItemStack stack=player.getHeldItem(handIn);
-        if(NESystem.getNE(player)>=100){
             if(stack.getDamage()>=10){
                 if(NESystem.removeNE(player,1)){
                     stack.setDamage(stack.getDamage()-10);
                 }
-            }
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
+    /**
+     * 添加注释
+     * @param stack
+     * @param worldIn
+     * @param tooltip
+     * @param flagIn
+     */
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(new TranslationTextComponent("originalfalse.tech.text.neshied"));

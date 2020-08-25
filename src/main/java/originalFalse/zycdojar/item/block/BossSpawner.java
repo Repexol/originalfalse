@@ -29,21 +29,34 @@ public class BossSpawner extends Block {
         setRegistryName("super_boss_spawner");
     }
 
+    /**
+     * 召唤台被右键
+     * @param state
+     * @param worldIn
+     * @param pos
+     * @param player
+     * @param handIn
+     * @param hit
+     * @return
+     */
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(!worldIn.isRemote){
             bsTile tileEntity= (bsTile) worldIn.getTileEntity(pos);
             if(player.isSneaking()){
+                //潜行右键清空
                 tileEntity.items=new HashMap<>();
                 tileEntity.count=0;
             }else {
                 if (player.getHeldItem(Hand.MAIN_HAND).getItem().equals(Items.AIR)) {
+                    //空手右键查看物品
                     player.sendMessage(new TranslationTextComponent("originalfalse.text.items"));
                     for (Item i : tileEntity.items.keySet()) {
                         player.sendMessage(new StringTextComponent(tileEntity.items.get(i) + "*" + i.getName().getString()));
                     }
                 } else {
                     if (tileEntity.count < 5) {
+                        //物品少于5那么就塞进去
                         if (tileEntity.items.get(player.getHeldItem(Hand.MAIN_HAND).getItem()) == null) {
                             tileEntity.items.put(player.getHeldItem(Hand.MAIN_HAND).getItem(), 1);
                         } else {
@@ -54,6 +67,7 @@ public class BossSpawner extends Block {
                     }
                 }
                 if (tileEntity.count == 5) {
+                    //试图合成
                     ItemStack x = craft.craft(tileEntity.items);
                     if (!(x == null)) {
                         player.addItemStackToInventory( x);

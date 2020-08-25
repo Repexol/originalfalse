@@ -24,6 +24,9 @@ import originalFalse.tech.zycdojar.main;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
+/**
+ * 传送仪
+ */
 public class teleporter extends Block {
     public teleporter() {
         super(CLASS.pps);
@@ -55,12 +58,15 @@ public class teleporter extends Block {
                 }
             } else {
                 if(!tile.getTileData().getString("player").equals("")) {
+                    //查找传送仪主人
                     PlayerEntity TargetPlayer=worldIn.getPlayerByUuid(UUID.fromString(tile.getTileData().getString("player")));
                     if(TargetPlayer!=null) {
+                        //消耗电量跨纬度
                         if(!TargetPlayer.getEntityWorld().getDimension().getType().equals(worldIn.getDimension().getType())){
                             if(NESystem.removeNE(TargetPlayer,100))
                             TargetPlayer.changeDimension(worldIn.getDimension().getType());
                         }
+                        //消耗电量传送
                         if(NESystem.removeNE(TargetPlayer,10)) {
                             //TargetPlayer.setPosition(pos.getX(),pos.getY()+1,pos.getZ());
                             TargetPlayer.attemptTeleport(pos.getX()-0.5, pos.getY() + 2, pos.getZ()-0.5, true);
@@ -69,9 +75,11 @@ public class teleporter extends Block {
                             player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
                         }
                     }else {
+                        //玩家离线
                         player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.offline"));
                     }
                 }else {
+                    //没有主人
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.pleaseSetOwner"));
                 }
             }

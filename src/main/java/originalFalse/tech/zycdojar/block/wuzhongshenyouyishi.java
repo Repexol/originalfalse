@@ -47,14 +47,17 @@ public class wuzhongshenyouyishi extends Block {
             if(stack.getItem().equals(main.pearl)){
                 player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.dontPeral"));
             }else
+                //检查多方块结构
             if(tile.check(player)){
                 CompoundNBT data=tile.getTileData();
+                //如果玩家手里没有东西那么取走容器内物品
                 if(stack.isEmpty()){
                     if(!ItemStack.read(data.getCompound("item")).isEmpty())
                         player.addItemStackToInventory(ItemStack.read(data.getCompound("item")));
                     data.put("item",ItemStack.EMPTY.serializeNBT());
                 }
                 else
+                    //下界之星开始仪式
                 if(stack.getItem().equals(Items.NETHER_STAR)){
                     if(NESystem.removeNE(player,1000)){
                         player.addItemStackToInventory(ItemStack.read(data.getCompound("item")));
@@ -66,8 +69,10 @@ public class wuzhongshenyouyishi extends Block {
                         }*/
                     }
                 }else {
+                    //如果里面有东西那么取出来
                     if(!ItemStack.read(data.getCompound("item")).isEmpty())
                         player.addItemStackToInventory(ItemStack.read(data.getCompound("item")));
+                    //然后把手里的东西放进去
                     data.put("item",new ItemStack(stack.getItem(),1).serializeNBT());
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
                     stack.setCount(stack.getCount()-1);

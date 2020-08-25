@@ -14,9 +14,15 @@ public class xukongjinshudabaifadianji extends TileEntity implements ITickableTi
         super(type);
     }
     private int tickd=0;
+
+    /**
+     * 详情https://neutrino.v2mcdev.com/tileentity/itickabletileentity.html
+     * 每tick发电
+     */
     @Override
     public void tick() {
         CompoundNBT nbt=getTileData();
+        //如果没有主人
         if(!nbt.getString("player").equals("")){
             if(tickd==50){
                 NESystem.grantNE(nbt.getString("player"),2);

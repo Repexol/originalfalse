@@ -7,6 +7,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -60,6 +61,11 @@ public class superItem extends SwordItem {
         tooltip.add(new TranslationTextComponent("originalfalse.text.sitem1"));
         tooltip.add(new TranslationTextComponent("originalfalse.text.sitem2"));
     }
+
+    /**
+     * 当玩家攻击时
+     * @param event
+     */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onKill(AttackEntityEvent event){
         PlayerEntity player=event.getPlayer();
@@ -68,6 +74,7 @@ public class superItem extends SwordItem {
             if(player.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.superItem)) {
                 worldSaveData data = worldSaveData.get(event.getEntity().getEntityWorld());
                 int deMana;
+                //消耗的魔力和伤害比例
                 if(((LivingEntity) event.getTarget()).getMaxHealth()>(5 * data.getLevel(player))){
                     deMana=5 * data.getLevel(player);
                 }else {
@@ -75,7 +82,9 @@ public class superItem extends SwordItem {
                 }
                 if(LevelSystem.removeMana(player,deMana,((ServerPlayerEntity) player).getServerWorld())) {
                     LivingEntity target = (LivingEntity) event.getTarget();
-                    target.setHealth(target.getHealth() - (5 * data.getLevel(player)));
+                    //伤害
+                    //target.setHealth(target.getHealth() - (5 * data.getLevel(player)));
+                    target.attackEntityFrom(DamageSource.OUT_OF_WORLD,(5 * data.getLevel(player)));
                 }
             }
         }

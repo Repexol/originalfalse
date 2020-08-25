@@ -13,6 +13,12 @@ import java.util.Set;
 
 public class craft {
     public static Set<craftHandle> craftHandles=new HashSet<>();
+
+    /**
+     * 原初节点
+     * @param map
+     * @return
+     */
     public static ItemStack craft(Map<Item,Integer> map){
         if(!(map.get(Items.IRON_INGOT) ==null)) {
             if(map.get(Items.IRON_INGOT)==1){
@@ -39,6 +45,7 @@ public class craft {
                 }
             }
         }
+        //如果找不到合成那么就在handle里找
         for(craftHandle handle:craftHandles){
             ItemStack stack=handle.craft(map);
             if(stack!=null){

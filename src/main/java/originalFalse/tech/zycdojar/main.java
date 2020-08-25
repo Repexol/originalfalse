@@ -24,26 +24,39 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class main {
+    //自然之息注入仪
     public static Block dengjiajiaohuanyi;
     public static Item dengjiajiaohuanyiI;
+    //自然之息宝珠
     public static Item pearl;
+    //雷霆仪
     public static Block lighting;
     public static Item lightingI;
-    public static Item nitunengfadianjiI;
-    public static Item voidMeterial;
+    //泥土能发电机
     public static Block nitunengfadianji;
+    public static Item nitunengfadianjiI;
+    //虚空金属
+    public static Item voidMeterial;
+    //虚空金属大摆发电机
     public static Block xukongjinshudabaifadianji;
+    public static Item skjsdbfdj;
+    //传送仪
     public static Block teleporter;
     public static Item teleporterI;
+    //无中生有仪式
     public static Block wuzhongshenyouyishi;
     public static Item wuzhongshenyouyishiI;
-    public static Item skjsdbfdj;
+    //自然护盾
     public static Item neshied;
+    //虚空护盾
     public static Item voidshied;
     @SubscribeEvent
     public static void setup(final FMLCommonSetupEvent event) {
+        //注册咒语
         SpellManager.registerSpellHandle(new spell());
+        //让自然之怒可研被生存获得
         SpellManager.registerSpellList("AngerOfNatural");
+        //注册玩家属性（在右键小刀的时候会显示）
         MessageManager.registerMessage(new messageH());
     }
     @SubscribeEvent

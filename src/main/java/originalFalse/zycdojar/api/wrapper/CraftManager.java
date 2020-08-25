@@ -4,6 +4,9 @@ import originalFalse.zycdojar.item.block.ManaCore;
 import originalFalse.zycdojar.item.block.bs.craft;
 import originalFalse.zycdojar.item.wand;
 
+/**
+ * 合成管理器
+ **/
 public class CraftManager {
     public static void registerOriginalCraft(craftHandle handle){
         originalFalse.zycdojar.item.block.gssb.crafting.craft.craftHandles.add(handle);

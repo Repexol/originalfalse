@@ -12,6 +12,9 @@ import originalFalse.zycdojar.api.wrapper.RequestManager;
 
 import java.util.function.Supplier;
 
+/*
+请求包（客户端向服务端发送）
+ */
 public class requestContext {
     private JsonObject request;
     private JsonObject state;
@@ -28,6 +31,7 @@ public class requestContext {
         request=new JsonObject();
         request.addProperty("statePack",true);
         state=new JsonObject();
+        //自定义api
         for(String name: RequestManager.handleMap.keySet()){
             state.add(name,RequestManager.handleMap.get(name).getState());
         }

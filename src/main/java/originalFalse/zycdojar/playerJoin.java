@@ -11,6 +11,10 @@ import originalFalse.zycdojar.api.wrapper.LevelSystem;
 
 @Mod.EventBusSubscriber
 public class playerJoin {
+    /**
+     * Ï²ÎÅÀÖ¼ûµÄ»¶Ó­Óï
+     * @param event
+     */
     @SubscribeEvent
     public static void onJoin(EntityJoinWorldEvent event){
         if(!event.getWorld().isRemote){

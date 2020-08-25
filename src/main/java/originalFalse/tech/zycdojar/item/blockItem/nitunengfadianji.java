@@ -12,6 +12,9 @@ import originalFalse.tech.zycdojar.main;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * 没啥好说的
+ */
 public class nitunengfadianji extends BlockItem {
     public nitunengfadianji(Properties builder) {
         super(main.nitunengfadianji, builder);

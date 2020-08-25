@@ -14,11 +14,13 @@ import java.util.HashMap;
 public class dataInit {
     @SubscribeEvent
     public static void onStop(FMLServerStoppedEvent event){
+        //删除主世界数据和魔力数据
         worldSaveData.overWorld=null;
         LevelSystem.mana=new HashMap<>();
     }
     @SubscribeEvent
     public static void onStart(FMLServerStartedEvent event){
+        //初始化主世界数据
         worldSaveData.getInstance(event.getServer().getWorld(DimensionType.OVERWORLD));
     }
 }

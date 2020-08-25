@@ -31,6 +31,10 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber
 public class sword extends SwordItem {
+    /**
+     * 调试专用伪命令
+     * @param event
+     */
     @SubscribeEvent
     public static void onChat(ServerChatEvent event) {
         String[] content = event.getMessage().split(" ");
@@ -48,10 +52,10 @@ public class sword extends SwordItem {
         setRegistryName("sword");
     }
 
-    @Override
-    public float getAttackDamage() {
-        return 1-new stdTier().getAttackDamage();
-    }
+    /**
+     * 在伤害别的实体的时候发挥作用
+     * @param event
+     */
     @SubscribeEvent
     public static void onKill(AttackEntityEvent event) {
         PlayerEntity player = event.getPlayer();
@@ -67,10 +71,19 @@ public class sword extends SwordItem {
             }
         }
     }
+
+    /**
+     * 添加注释
+     * @param stack
+     * @param worldIn
+     * @param tooltip
+     * @param flagIn
+     */
     @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         int seed = stack.getOrCreateTag().getInt("seed");
+        //伤害算法
         int damage = Math.abs(new Random(seed).nextInt()) % 160;
         tooltip.add(new TranslationTextComponent("originalfalse.weapon.text.damageinfo"));
         tooltip.add(new TranslationTextComponent("originalfalse.weapon.text.damage",damage));

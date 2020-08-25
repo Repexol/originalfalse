@@ -22,6 +22,9 @@ import originalFalse.zycdojar.event.dataCenter.worldSaveData;
 
 import java.util.*;
 
+/**
+ * 魔杖
+ */
 public class wand extends Item {
     public static Set<spellHandle> handles=new HashSet<>();
     public static Map<String,String> chooseSpell=new HashMap<>();
@@ -30,21 +33,34 @@ public class wand extends Item {
         setRegistryName("wand");
     }
 
+    /**
+     * 右键
+     * @param worldIn
+     * @param playerIn
+     * @param handIn
+     * @return
+     */
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if(!worldIn.isRemote){
+            //查询玩家选择的魔咒
             String spell=chooseSpell.get(playerIn.getUniqueID().toString());
             if(spell==null){
                 spell="null";
             }
             if(playerIn.isSneaking()){
+                //如果玩家是蹲着的，那么随机选择魔咒
                 spell=randomChooseSpell(playerIn,worldIn);
                 chooseSpell.put(playerIn.getUniqueID().toString(),spell);
             }else {
+                //玩家最后一次攻击的怪物
                 LivingEntity entity=playerIn.getLastAttackedEntity();
+                //如果没有
+                //那么目标就是玩家自己
                 if(entity==null){
                     entity=playerIn;
                 }
+                //尝试在已知魔咒里找
                 if(spell.equals("null")){
                     playerIn.sendMessage(new TranslationTextComponent("originalfalse.text.pchangespell"));
                 }else if(spell.equals("test")){
@@ -59,6 +75,7 @@ public class wand extends Item {
                     }
                 }
                 else{
+                    //找不到就到handle里找
                     boolean b=false;
                     for(spellHandle handle:handles){
                         if(handle.spell(spell, entity,(ServerPlayerEntity) playerIn)){
@@ -66,6 +83,7 @@ public class wand extends Item {
                             break;
                         }
                     }
+                    //实在找不到那么就报错
                     if(!b){
                         playerIn.sendMessage(new StringTextComponent("错误：未可用法术；你是否删除了附属/附属bug？"));
                     }
@@ -74,8 +92,16 @@ public class wand extends Item {
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
+
+    /**
+     * 随机选择魔咒
+     * @param entity
+     * @param worldIn
+     * @return
+     */
     private static String randomChooseSpell(PlayerEntity entity,World worldIn){
         worldSaveData data=worldSaveData.get(worldIn);
+        //魔咒列表
         if(data.getSpell(entity).isEmpty()){
             return "null";
         }

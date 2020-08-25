@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class dengjiajiaohuanyiTile extends TileEntity {
+    @Deprecated
     public Set<ItemStack> stacks=new HashSet<>();
     public Map<Item,Integer> items=new HashMap<>();
     public static TileEntityType<dengjiajiaohuanyiTile> type=
@@ -28,12 +29,14 @@ public class dengjiajiaohuanyiTile extends TileEntity {
     }
     public boolean check(PlayerEntity tip){
         boolean flag=true;
+        //数字化结构
         int[][] struct={{2,1,0},{2,0,0},{-2,1,0},{-2,0,0},{0,1,-2},{0,0,-2},{0,0,2},{0,1,2}};
         for(int[] str:struct){
             BlockPos pos=this.pos.add(str[0],str[1],str[2]);
             if(!world.getBlockState(pos).getBlock().equals(itemregister.ManaCore)){
                 if(tip!=null) {
                     tip.sendMessage(new StringTextComponent("error at " + pos.getX() + " " + pos.getY() + " " + pos.getZ()));
+                    //传送玩家到错误处
                     tip.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
                 }
                 flag=false;
@@ -43,9 +46,13 @@ public class dengjiajiaohuanyiTile extends TileEntity {
     }
 
 
-
+    /**
+     * 储存内容
+     * @param compound
+     */
     @Override
     public void read(CompoundNBT compound) {
+        //我的b站用户名
         ListNBT nbt= (ListNBT) compound.get("bilibiliTheRepexolStudio");
         if(nbt!=null)
         for(INBT inbt:nbt){

@@ -22,6 +22,9 @@ import originalFalse.tech.zycdojar.main;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
+/**
+ * 泥土能发电机
+ */
 public class nitunengfadianji extends Block {
     public nitunengfadianji() {
         super(CLASS.pps);
@@ -39,11 +42,24 @@ public class nitunengfadianji extends Block {
         return new nituFadianjiTile();
     }
 
+    /**
+     * 当方块被右键
+     * @param state
+     * @param worldIn
+     * @param pos
+     * @param player
+     * @param handIn
+     * @param hit
+     * @return
+     */
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(!worldIn.isRemote) {
+
             nituFadianjiTile tile = (nituFadianjiTile) worldIn.getTileEntity(pos);
+            //塞入珍珠
             if (player.getHeldItem(handIn).getItem().equals(main.pearl)) {
+                //如果珍珠没有主人
                 if (player.getHeldItem(handIn).getTag().getString("owner").equals("")) {
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.noOwner"));
                 } else {
@@ -53,7 +69,9 @@ public class nitunengfadianji extends Block {
                 }
             } else if (player.getHeldItem(handIn).getItem().equals(Items.DIRT)) {
                 if(!tile.getTileData().getString("player").equals("")) {
-                    if(NESystem.getNE(tile.getTileData().getString("player"))<=100) {
+                    //泥土发电
+                    //超过100电量不予发电
+                    if(NESystem.getNE(tile.getTileData().getString("player"))<100) {
                         NESystem.grantNE(tile.getTileData().getString("player"), 1);
                         player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
                     }else {

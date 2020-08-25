@@ -28,13 +28,21 @@ public class superShield extends Item {
         super(properties);
         setRegistryName("super_shield");
     }
+
+    /**
+     * 玩家受伤时
+     * 消耗魔力抵挡
+     * @param event
+     */
     @SubscribeEvent
     public static void onAttact(LivingDamageEvent event){
         if(event.getEntity() instanceof ServerPlayerEntity){
             ServerPlayerEntity player= (ServerPlayerEntity) event.getEntity();
             if(player.getHeldItem(Hand.OFF_HAND).getItem().equals(itemregister.superShield)){
                 worldSaveData data=worldSaveData.getInstance(player.getServerWorld());
+                //如果受伤小于伤害上限
                 if(event.getAmount()<=data.getLevel(player)/2){
+                    //扣除魔力免伤
                     if(LevelSystem.removeMana(player, Math.round(event.getAmount()*2),player.getServerWorld())) {
                         event.setCanceled(true);
                     }

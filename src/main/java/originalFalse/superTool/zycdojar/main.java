@@ -24,13 +24,19 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class main {
+    //设计图
     public static Item icon;
+    //制图台
     public static Block anvil;
+    //制图台的物品形式
     public static Item anvili;
+    //自定义剑
     public static Item sword;
     @SubscribeEvent
     public static void setup(final FMLCommonSetupEvent event){
+        //自定义api（测试咒语）
         SpellManager.registerSpellHandle(new handle());
+        //自定api（处理制图台合成）
         CraftManager.registerSpawnerCraft(new craft());
     }
     @SubscribeEvent

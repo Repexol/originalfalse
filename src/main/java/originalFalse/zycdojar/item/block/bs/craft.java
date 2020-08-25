@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 召唤台合成
+ */
 public class craft {
     public static Set<craftHandle> craftHandles=new HashSet<>();
     public static ItemStack craft(HashMap<Item,Integer> map){
@@ -30,6 +33,7 @@ public class craft {
                 }
             }
         }
+        //如果找不到合成就在handle里找
         for(craftHandle handle:craftHandles){
             ItemStack stack=handle.craft(map);
             if(stack!=null){

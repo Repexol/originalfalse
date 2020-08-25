@@ -5,6 +5,9 @@ import net.minecraft.item.ItemStack;
 
 import java.util.Map;
 
+/**
+ * 合成api
+ */
 public interface craftHandle {
     public ItemStack craft(Map<Item,Integer> items);
 }

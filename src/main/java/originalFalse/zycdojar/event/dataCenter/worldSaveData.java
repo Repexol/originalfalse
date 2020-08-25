@@ -16,9 +16,16 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @deprecated
+ * 用于储存玩家数据的（经验、等级）
+ * 不推荐使用这里的api，推荐用LevelSystem
+ */
 public class worldSaveData extends WorldSavedData {
     public Map<String,Integer> level=new HashMap<>();
     public Map<String,Set<String>> spell=new HashMap<>();
+    //主世界数据
+    //在没有提供worldIn，但是需要的地方，将在服务器启动的时候初始化
     public static World overWorld=null;
     public static Set<messageHandle> messageHandles=new HashSet<>();
     public Map<String,Integer> exp=new HashMap<>();
@@ -26,13 +33,26 @@ public class worldSaveData extends WorldSavedData {
     public worldSaveData() {
         super(name);
     }
+
+    /**
+     * 初始化玩家学会的的咒语列表
+     * @param player
+     */
     private void initSpell(PlayerEntity player){
         if(spell.get(player.getUniqueID().toString())==null) {
             spell.put(player.getUniqueID().toString(), new HashSet<>());
+            //保存修改到系统
             markDirty();
         }
     }
+
+    /**
+     * 获取玩家等级
+     * @param player
+     * @return
+     */
     public int getLevel(PlayerEntity player){
+        //刷新数据
         markDirty();
         String uuid=player.getUniqueID().toString();
         if(level.get(uuid)==null){
@@ -48,6 +68,12 @@ public class worldSaveData extends WorldSavedData {
         }
         return level.get(uuid);
     }
+
+    /**
+     * 设置玩家等级
+     * @param entity
+     * @param level
+     */
     public void setLevel(PlayerEntity entity,int level){
         this.level.put(entity.getUniqueID().toString(),level);
         markDirty();
@@ -56,6 +82,12 @@ public class worldSaveData extends WorldSavedData {
         this.level.put(entity,level);
         markDirty();
     }
+
+    /**
+     * 获取玩家经验
+     * @param player
+     * @return 经验
+     */
     public int getExp(PlayerEntity player){
         markDirty();
         String uuid=player.getUniqueID().toString();
@@ -64,6 +96,14 @@ public class worldSaveData extends WorldSavedData {
         }
         return exp.get(uuid);
     }
+
+    /**
+     * 玩家学习咒语（在咒语列表中添加）
+     * 如果已经学习过了，把么返回假
+     * @param player
+     * @param spell
+     * @return 是否已经学过了
+     */
     public boolean study(PlayerEntity player,String spell){
         initSpell(player);
         if(!this.spell.get(player.getUniqueID().toString()).contains(spell))
@@ -74,15 +114,33 @@ public class worldSaveData extends WorldSavedData {
         markDirty();
         return true;
     }
+
+    /**
+     * 获取玩家咒语列表
+     * @param player
+     * @return
+     */
     public Set<String> getSpell(PlayerEntity player){
         initSpell(player);
         markDirty();
         return this.spell.get(player.getUniqueID().toString());
     }
+
+    /**
+     * 这种玩家经验
+     * @param entity
+     * @param level
+     */
     public void setExp(PlayerEntity entity,int level){
         this.exp.put(entity.getUniqueID().toString(),level);
         markDirty();
     }
+
+    /**
+     * 这个东西不能直接new，要getInstance;
+     * @param worldIn
+     * @return
+     */
     public static worldSaveData getInstance(World worldIn){
         return get(worldIn);
     }

@@ -15,12 +15,22 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * 自然之息宝珠
+ */
 public class pearl extends Item {
     public pearl(Properties properties) {
         super(properties);
         setRegistryName("tech_pearl");
     }
 
+    /**
+     * 右键设置主人
+     * @param worldIn
+     * @param playerIn
+     * @param handIn
+     * @return
+     */
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if(!worldIn.isRemote) {
@@ -32,6 +42,13 @@ public class pearl extends Item {
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
+    /**
+     * 添加注释
+     * @param stack
+     * @param worldIn
+     * @param tooltip
+     * @param flagIn
+     */
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(new TranslationTextComponent("originalfalse.tech.text.owner",

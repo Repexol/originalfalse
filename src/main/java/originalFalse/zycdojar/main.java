@@ -51,12 +51,13 @@ public class main
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        //如果服务器发送的数据中魔力部分未能初始化，那么就要求服务器初始化
         RequestManager.registerHandle(new RequestHandle() {
             @Override
             public boolean handle(JsonObject object) {
                 return false;
             }
-
+            //在客户端执行
             @Override
             public JsonObject getState() {
                 JsonObject object=new JsonObject();
@@ -68,7 +69,7 @@ public class main
                 }
                 return object;
             }
-
+            //会在服务器执行
             @Override
             public void handleState(JsonObject object) {
                 if(object.get("reloadMana").getAsBoolean()){

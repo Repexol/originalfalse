@@ -15,6 +15,11 @@ import originalFalse.zycdojar.skybiome.skyBiome;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 本来测试添加新地形
+ * 结果crash了
+ */
+@Deprecated
 @Mod.EventBusSubscriber(bus= Mod.EventBusSubscriber.Bus.MOD)
 public class itemregister2 {
     @SubscribeEvent

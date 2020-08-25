@@ -21,12 +21,20 @@ import originalFalse.zycdojar.event.registyevent.itemregister;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * 虚空之盾
+ */
 @Mod.EventBusSubscriber
 public class voidShied extends Item {
     public voidShied(Properties properties) {
         super(properties);
         setRegistryName("void_shied");
     }
+
+    /**
+     * 抵挡伤害
+     * @param event
+     */
     @SubscribeEvent
     public static void onAttact(LivingDamageEvent event){
         if(event.getEntity() instanceof ServerPlayerEntity){

@@ -8,6 +8,11 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 import originalFalse.zycdojar.api.levelPack;
 
+/**
+ * networking
+ * 主要负责服务端向客户端发送玩家状态
+ * 请见https://neutrino.v2mcdev.com/networking/intro.html
+ */
 public class LevelSender {
     public static SimpleChannel INSTANCE;
     public static final String VERSION = "1.0";

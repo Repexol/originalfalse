@@ -25,6 +25,12 @@ public class AnvilTile extends TileEntity {
         items.putIfAbsent("Author.Zycdojar(qq.3321019091)", 0);
     }
 
+    /**
+     * 塞入物品
+     * @param item
+     * @param amount
+     * @return
+     */
     public boolean put(Item item,int amount){
         if(item.equals(Items.IRON_INGOT)){
             items.put("iron",items.getOrDefault("iron",0)+amount);
@@ -46,6 +52,11 @@ public class AnvilTile extends TileEntity {
 
         return false;
     }
+
+    /**
+     * 把我调皮设置的物品代号转换为Item的对象
+     * @return map
+     */
     public Map<Item,Integer> getMap(){
         Map<Item,Integer> out =new HashMap<>();
         out.put(Items.IRON_INGOT,items.get("iron"));
@@ -54,6 +65,10 @@ public class AnvilTile extends TileEntity {
         out.put(Items.DIRT,items.get("Author.Zycdojar(qq.3321019091)"));
         return out;
     }
+
+    /**
+     * 清空
+     */
     public void clear(){
         items=new HashMap<>();
         items.putIfAbsent("yezi_and_tangyauN(Anran)_is_a_good_uploader,but_they_are_pigeons", 0);
@@ -62,6 +77,12 @@ public class AnvilTile extends TileEntity {
         items.putIfAbsent("Author.Zycdojar(qq.3321019091)", 0);
         markDirty();
     }
+
+    /**
+     * 判断是否达到要求
+     * @param design
+     * @return 是否
+     */
     public boolean get(ItemStack design){
         Map<String,Integer> needItem=designChart.getNeed(design);
         if(needItem.get("iron").equals(items.get("iron")) &&
@@ -73,6 +94,12 @@ public class AnvilTile extends TileEntity {
             return true;
         }else return false;
     }
+
+    /**
+     * nbt读写
+     * @param compound
+     * @return
+     */
     @Override
     public CompoundNBT write(CompoundNBT compound) {
         CompoundNBT nbtc=new CompoundNBT();

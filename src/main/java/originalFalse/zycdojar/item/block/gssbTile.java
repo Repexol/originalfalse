@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class gssbTile extends TileEntity {
+    //物品列表
     public Map<Item, Integer> yss=new HashMap<>();
     public gssbTile() {
         super(TileEntityTypeRegistry.gssbET);

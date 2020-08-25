@@ -7,6 +7,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
+/**
+ * networking
+ * 主要负责客户端向服务端传达请求
+ * 请见https://neutrino.v2mcdev.com/networking/intro.html
+ */
 public class ClientRequest {
     public static SimpleChannel INSTANCE;
     public static final String VERSION = "1.0";

@@ -22,6 +22,9 @@ import originalFalse.zycdojar.main;
 import java.util.Properties;
 import java.util.function.Supplier;
 
+/**
+ * 服务端向客户端发送玩家状态
+ */
 public class levelPack {
     public int level=0;
     public int exp=0;
@@ -37,6 +40,10 @@ public class levelPack {
         //message = buffer.readString(Short.MAX_VALUE);
     }
 
+    /**
+     * 获取状态
+     * @param playerInfo
+     */
     public levelPack(PlayerEntity playerInfo) {
         if(worldSaveData.overWorld!=null) {
             worldSaveData char1Data = worldSaveData.getInstance(worldSaveData.overWorld);
@@ -56,6 +63,10 @@ public class levelPack {
         buf.writeString(object.toString());
     }
 
+    /**
+     * 客户端接收状态
+     * @param ctx
+     */
     public void handler(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             client.exp=exp;

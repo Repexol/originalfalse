@@ -9,6 +9,10 @@ import originalFalse.zycdojar.event.registyevent.itemregister;
 
 @Mod.EventBusSubscriber()
 public class RestoneIngot {
+    /**
+     * 催化剂抵抗伤害
+     * @param event
+     */
     @SubscribeEvent
     public static void onEno(LivingDamageEvent event){
         if(event.getEntity() instanceof PlayerEntity) {

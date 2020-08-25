@@ -19,25 +19,41 @@ import java.util.*;
 
 @Mod.EventBusSubscriber(bus= Mod.EventBusSubscriber.Bus.MOD)
 public class itemregister {
+    //断剑
     public static Item icon;
+    //原初节点
     public static Block getSSB;
     public static Item getSSBI;
+    //原初转化粉
     public static Item chj;
+    //红铁锭
     public static Item gwi;
+    //普普通通的盾
     public static Item superShield;
+    //魔力核心
     public static Block ManaCore;
     public static Item ManaCorei;
+    //纸
     public static Item paper;
+    //红铁结晶
     public static Block Redic;
     public static Item RedIci;
+    //刀背
     public static Item Furen;
+    //神剑
     public static Item blade;
+    //刀刃
     public static Item bladeCore;
+    //咒语书
     public static Item spellBook;
+    //召唤台
     public static Block bossSpawner;
     public static Item bossSpawnerItem;
+    //非常原始的小刀
     public static Item superItem;
+    //魔杖
     public static Item wand;
+    //刀柄
     public static Item bladeroot;
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {

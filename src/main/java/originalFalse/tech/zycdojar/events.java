@@ -15,6 +15,10 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class events {
+    /**
+     * 玩家死亡的时候显示awa
+     * @param event
+     */
     @SubscribeEvent
     public static void onDead(PlayerEvent.PlayerRespawnEvent event){
         if(event.getPlayer() instanceof ServerPlayerEntity){

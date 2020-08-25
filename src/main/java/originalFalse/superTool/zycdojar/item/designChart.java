@@ -28,6 +28,12 @@ public class designChart extends Item {
         super(properties);
         setRegistryName("design_chart");
     }
+
+    /**
+     * 获取需要的东西
+     * @param itemStack
+     * @return
+     */
     public static Map<String,Integer> getNeed(ItemStack itemStack){
         if(itemStack.getItem().equals(main.icon)){
             int seed=itemStack.getOrCreateTag().getInt("designSeed");
@@ -47,6 +53,15 @@ public class designChart extends Item {
         }
     }
 
+    /**
+     * 添加备注（名字是我调皮）
+     * 不过叶安还真是鸽子
+     * 而且如果有人那么有钱的话……
+     * @param stack
+     * @param worldIn
+     * @param tooltip
+     * @param flagIn
+     */
     @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {

@@ -39,7 +39,10 @@ public class xukongjinshudabaifadianji extends Block {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(!worldIn.isRemote) {
             originalFalse.tech.zycdojar.block.tile.xukongjinshudabaifadianji tile = (originalFalse.tech.zycdojar.block.tile.xukongjinshudabaifadianji) worldIn.getTileEntity(pos);
+            //单纯的是放入自然之息宝珠
+            //发电部分在tileEntity里
             if (player.getHeldItem(handIn).getItem().equals(main.pearl)) {
+                //如果没有主人
                 if (player.getHeldItem(handIn).getTag().getString("owner").equals("")) {
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.noOwner"));
                 } else {

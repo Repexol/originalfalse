@@ -22,8 +22,15 @@ import originalFalse.zycdojar.event.dataCenter.worldSaveData;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * 咒语书
+ */
 @Mod.EventBusSubscriber
 public class spellStuder extends Item {
+    /**
+     * 调试伪指令
+     * @param event
+     */
     @SubscribeEvent
     public static void onChat(ServerChatEvent event){
         String[] content=event.getMessage().split(" ");
@@ -40,12 +47,19 @@ public class spellStuder extends Item {
         setRegistryName("spell_book");
     }
 
-
+    /**
+     * 右键学习
+     * @param worldIn
+     * @param playerIn
+     * @param handIn
+     * @return
+     */
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn,PlayerEntity playerIn, Hand handIn) {
         if(!worldIn.isRemote) {
             worldSaveData data = worldSaveData.getInstance(worldIn);
             String spell=playerIn.getHeldItem(Hand.MAIN_HAND).getTag().getString("spellbook");
+            //创造拿出的咒语书是没有咒语的，默认是测试咒语
             if(spell==null){
                 spell="test";
             }
@@ -53,6 +67,14 @@ public class spellStuder extends Item {
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
+
+    /**
+     * 显示咒语名字
+     * @param stack
+     * @param worldIn
+     * @param tooltip
+     * @param flagIn
+     */
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         String spell=getShareTag(stack).getString("spellbook");

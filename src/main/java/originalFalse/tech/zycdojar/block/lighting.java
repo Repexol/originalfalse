@@ -43,7 +43,9 @@ public class lighting extends Block {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(!worldIn.isRemote) {
             lightingTile tile = (lightingTile) worldIn.getTileEntity(pos);
+            //塞入珍珠
             if (player.getHeldItem(handIn).getItem().equals(main.pearl)) {
+                //如果珍珠没有主人
                 if (player.getHeldItem(handIn).getTag().getString("owner").equals("")) {
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.noOwner"));
                 } else {
@@ -52,7 +54,9 @@ public class lighting extends Block {
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
                 }
             } else {
+                //如果机器没有塞入珍珠
                 if(!tile.getTileData().getString("player").equals("")) {
+                    //雷霆
                     LightningBoltEntity entity=new LightningBoltEntity(worldIn,pos.getX(),pos.getY()+1,pos.getZ(),false);
                     worldIn.addEntity(entity);
                 }

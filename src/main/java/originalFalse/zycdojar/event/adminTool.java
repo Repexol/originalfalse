@@ -20,13 +20,19 @@ import originalFalse.zycdojar.main;
 
 @Mod.EventBusSubscriber()
 public class adminTool {
+    @Deprecated
     public static boolean isAdmin(PlayerEntity entity){
         String name=entity.getName().getString();
-        if(name.equalsIgnoreCase("Zycddj")||name.equalsIgnoreCase("Dev")){
+        if(name.startsWith("Player")||name.equalsIgnoreCase("Dev")){
             return true;
         }
         return false;
     }
+
+    /**
+     * ÓÒ¼üÉý¼¶
+     * @param event
+     */
     @SubscribeEvent
     public static void onkillX(PlayerInteractEvent.RightClickBlock event){
         if(!event.getWorld().isRemote)
@@ -38,6 +44,11 @@ public class adminTool {
             }
         }
     }
+
+    /**
+     * ·ÀÓù
+     * @param event
+     */
     @SubscribeEvent
     public static void onEno(LivingDamageEvent event){
         if(event.getEntity() instanceof PlayerEntity){
@@ -48,6 +59,11 @@ public class adminTool {
             }
         }
     }
+
+    /**
+     * ÎÞÏÞÉËº¦
+     * @param event
+     */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onKill(AttackEntityEvent event){
         if(event.getPlayer() instanceof ServerPlayerEntity) {

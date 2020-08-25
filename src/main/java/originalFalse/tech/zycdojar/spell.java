@@ -14,12 +14,22 @@ import originalFalse.tech.zycdojar.api.wrapper.NESystem;
 import originalFalse.zycdojar.api.wrapper.spellHandle;
 
 public class spell implements spellHandle {
+    /**
+     * 咒语执行
+     * 自定义的api
+     * @param spell
+     * @param target
+     * @param player
+     * @return
+     */
     @Override
     public boolean spell(String spell, LivingEntity target, ServerPlayerEntity player) {
+        //测试咒语
         if(spell.equals("tech-test")){
             player.sendMessage(new StringTextComponent("你成功安装了of科技拓展"));
             return true;
         }else if(spell.equals("AngerOfNatural")){
+            //自然之怒
             if(NESystem.removeNE(player,10)) {
                 LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(target.getEntityWorld(), target.getPosX(), target.getPosY(), target.getPosZ(), false);
                 lightningBoltEntity.setFire(999);
@@ -30,6 +40,7 @@ public class spell implements spellHandle {
             }
             return true;
         }else if(spell.equals("scan")){
+            //扫描（未完成）
             RayTraceResult result=player.getServerWorld().rayTraceBlocks(new RayTraceContext(player.getPositionVec().add(0,1,0),player.getLookVec(), RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE,player));
             Vec3d obj=result.getHitVec();
             BlockPos pos=new BlockPos(obj.getX(),obj.getY(),obj.getZ());

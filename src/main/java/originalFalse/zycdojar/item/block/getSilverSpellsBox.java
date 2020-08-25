@@ -44,11 +44,22 @@ public class getSilverSpellsBox extends Block {
         return new gssbTile();
     }
 
+    /**
+     * 当方块被右键
+     * @param state
+     * @param worldIn
+     * @param pos
+     * @param player
+     * @param handIn
+     * @param hit
+     * @return
+     */
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote && handIn == Hand.MAIN_HAND) {
             gssbTile tile= (gssbTile) worldIn.getTileEntity(pos);
             if(player.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.chj)){
+                //催化剂提取结果
                 //player.sendMessage(new TranslationTextComponent("originalfalse.text.todo"));
                 if(craft.craft(tile.yss)!=null){
                     player.addItemStackToInventory(craft.craft(tile.yss));
@@ -57,14 +68,17 @@ public class getSilverSpellsBox extends Block {
                     tile.yss=new HashMap<>();
                 }
             }else if(player.getHeldItem(Hand.MAIN_HAND).getItem().equals(Items.AIR)){
+                //空手查看容器内容
                 player.sendMessage(new TranslationTextComponent("originalfalse.text.items"));
                 for(Item i:tile.yss.keySet()){
                     player.sendMessage(new StringTextComponent(tile.yss.get(i)+"*"+i.getName().getString()));
                 }
             }else{
+                //如果容器内没有玩家手里的东西那么就直接put
                 if(tile.yss.get(player.getHeldItem(Hand.MAIN_HAND).getItem())==null) {
                     tile.yss.put(player.getHeldItem(Hand.MAIN_HAND).getItem(), player.getHeldItem(Hand.MAIN_HAND).getCount());
                 }else{
+                    //如果有那么就加上
                     tile.yss.put(player.getHeldItem(Hand.MAIN_HAND).getItem(), tile.yss.get(player.getHeldItem(Hand.MAIN_HAND).getItem())+player.getHeldItem(Hand.MAIN_HAND).getCount());
                 }
                 //player.sendMessage(new StringTextComponent(player.getHeldItem(Hand.MAIN_HAND).getCount()+"*"+player.getHeldItem(Hand.MAIN_HAND).getItem()));
@@ -74,6 +88,7 @@ public class getSilverSpellsBox extends Block {
         return ActionResultType.SUCCESS;
     }
 
+    //放置时玩家当场暴毙
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         if(placer instanceof PlayerEntity){
