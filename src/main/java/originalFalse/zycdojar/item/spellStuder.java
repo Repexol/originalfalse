@@ -23,12 +23,12 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * ÖäÓïÊé
+ * å’’è¯­ä¹¦
  */
 @Mod.EventBusSubscriber
 public class spellStuder extends Item {
     /**
-     * µ÷ÊÔÎ±Ö¸Áî
+     * è°ƒè¯•ä¼ªæŒ‡ä»¤
      * @param event
      */
     @SubscribeEvent
@@ -38,7 +38,7 @@ public class spellStuder extends Item {
         if(event.getPlayer().getHeldItem(Hand.MAIN_HAND).getItem() instanceof spellStuder){
             if(content[0].equals("set")){
                 event.getPlayer().getHeldItem(Hand.MAIN_HAND).getOrCreateTag().put("spellbook", StringNBT.valueOf(content[1]));
-                event.getPlayer().sendMessage(new StringTextComponent("ÄãÒÑ¾­ĞŞ¸ÄÎª"+content[1]));
+                event.getPlayer().sendMessage(new StringTextComponent("ä½ å·²ç»ä¿®æ”¹ä¸º"+content[1]));
             }
         }
     }
@@ -48,7 +48,7 @@ public class spellStuder extends Item {
     }
 
     /**
-     * ÓÒ¼üÑ§Ï°
+     * å³é”®å­¦ä¹ 
      * @param worldIn
      * @param playerIn
      * @param handIn
@@ -59,7 +59,7 @@ public class spellStuder extends Item {
         if(!worldIn.isRemote) {
             worldSaveData data = worldSaveData.getInstance(worldIn);
             String spell=playerIn.getHeldItem(Hand.MAIN_HAND).getTag().getString("spellbook");
-            //´´ÔìÄÃ³öµÄÖäÓïÊéÊÇÃ»ÓĞÖäÓïµÄ£¬Ä¬ÈÏÊÇ²âÊÔÖäÓï
+            //åˆ›é€ æ‹¿å‡ºçš„å’’è¯­ä¹¦æ˜¯æ²¡æœ‰å’’è¯­çš„ï¼Œé»˜è®¤æ˜¯æµ‹è¯•å’’è¯­
             if(spell==null){
                 spell="test";
             }
@@ -69,7 +69,7 @@ public class spellStuder extends Item {
     }
 
     /**
-     * ÏÔÊ¾ÖäÓïÃû×Ö
+     * æ˜¾ç¤ºå’’è¯­åå­—
      * @param stack
      * @param worldIn
      * @param tooltip

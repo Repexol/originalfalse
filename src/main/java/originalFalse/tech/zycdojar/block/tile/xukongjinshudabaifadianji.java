@@ -25,6 +25,7 @@ public class xukongjinshudabaifadianji extends TileEntity implements ITickableTi
         //如果没有主人
         if(!nbt.getString("player").equals("")){
             if(tickd==50){
+                if(NESystem.getNE(nbt.getString("player"))<1000)
                 NESystem.grantNE(nbt.getString("player"),2);
                 tickd=0;
             }else {

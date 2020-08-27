@@ -6,6 +6,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import originalFalse.tech.zycdojar.api.wrapper.NESystem;
 import originalFalse.zycdojar.event.dataCenter.worldSaveData;
@@ -55,18 +56,20 @@ public class LevelSystem {
      */
     @SubscribeEvent
     public static void tickWrapper(TickEvent event){
-        if(worldSaveData.overWorld==null){
-        }else {
-            if((Math.abs(new Random().nextInt())%100)>=98)
-            tick(worldSaveData.overWorld);
-            if(ticks==5) {
-                if(markSync) {
-                    sync();
-                    markSync=false;
+        if(event.side== LogicalSide.SERVER) {
+            if (worldSaveData.overWorld == null) {
+            } else {
+                if ((Math.abs(new Random().nextInt()) % 100) >= 98)
+                    tick(worldSaveData.overWorld);
+                if (ticks == 5) {
+                    if (markSync) {
+                        sync();
+                        markSync = false;
+                    }
+                    ticks = 0;
+                } else {
+                    ticks++;
                 }
-                ticks=0;
-            }else {
-                ticks++;
             }
         }
     }

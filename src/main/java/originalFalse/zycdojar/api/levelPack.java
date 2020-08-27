@@ -8,8 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.network.NetworkEvent;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
 import org.lwjgl.system.CallbackI;
 import originalFalse.tech.zycdojar.api.wrapper.NESystem;
 import originalFalse.zycdojar.api.client.ClientRequest;

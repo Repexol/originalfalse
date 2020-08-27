@@ -30,7 +30,7 @@ public class creativeBlade extends PickaxeItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(new TranslationTextComponent("originalfalse.text.sq"));
-        tooltip.add(new TranslationTextComponent("originalfalse.text.onBlade","±¾½£ÊôÓÚZycddj"));
+        tooltip.add(new TranslationTextComponent("originalfalse.text.onBlade","æœ¬å‰‘å±žäºŽZycddj"));
     }
 
     @Override

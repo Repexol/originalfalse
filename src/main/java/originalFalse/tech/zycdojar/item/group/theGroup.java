@@ -6,7 +6,7 @@ import net.minecraft.item.Items;
 import originalFalse.zycdojar.item.group.originalFalseGroup;
 
 public class theGroup extends ItemGroup {
-    public static final ItemGroup gmy_group = new originalFalseGroup(ItemGroup.GROUPS.length, "tech_addon");
+    public static final ItemGroup gmy_group = new theGroup(ItemGroup.GROUPS.length, "tech_addon");
     public theGroup(int index, String label) {
         super(index, label);
     }

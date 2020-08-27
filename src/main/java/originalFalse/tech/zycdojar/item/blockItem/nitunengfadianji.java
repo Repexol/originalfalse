@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * Ã»É¶ºÃËµµÄ
+ * æ²¡å•¥å¥½è¯´çš„
  */
 public class nitunengfadianji extends BlockItem {
     public nitunengfadianji(Properties builder) {
@@ -23,6 +23,6 @@ public class nitunengfadianji extends BlockItem {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new StringTextComponent("ÄàÍÁÊÇ×ÔÈ»²úÉúµÄ"));
+        tooltip.add(new StringTextComponent("æ³¥åœŸæ˜¯è‡ªç„¶äº§ç”Ÿçš„"));
     }
 }

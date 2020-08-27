@@ -63,7 +63,7 @@ public class superItem extends SwordItem {
     }
 
     /**
-     * µ±Íæ¼Ò¹¥»÷Ê±
+     * å½“çŽ©å®¶æ”»å‡»æ—¶
      * @param event
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
@@ -74,7 +74,7 @@ public class superItem extends SwordItem {
             if(player.getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.superItem)) {
                 worldSaveData data = worldSaveData.get(event.getEntity().getEntityWorld());
                 int deMana;
-                //ÏûºÄµÄÄ§Á¦ºÍÉËº¦±ÈÀý
+                //æ¶ˆè€—çš„é­”åŠ›å’Œä¼¤å®³æ¯”ä¾‹
                 if(((LivingEntity) event.getTarget()).getMaxHealth()>(5 * data.getLevel(player))){
                     deMana=5 * data.getLevel(player);
                 }else {
@@ -82,7 +82,7 @@ public class superItem extends SwordItem {
                 }
                 if(LevelSystem.removeMana(player,deMana,((ServerPlayerEntity) player).getServerWorld())) {
                     LivingEntity target = (LivingEntity) event.getTarget();
-                    //ÉËº¦
+                    //ä¼¤å®³
                     //target.setHealth(target.getHealth() - (5 * data.getLevel(player)));
                     target.attackEntityFrom(DamageSource.OUT_OF_WORLD,(5 * data.getLevel(player)));
                 }

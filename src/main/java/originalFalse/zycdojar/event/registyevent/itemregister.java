@@ -19,41 +19,41 @@ import java.util.*;
 
 @Mod.EventBusSubscriber(bus= Mod.EventBusSubscriber.Bus.MOD)
 public class itemregister {
-    //¶Ï½£
+    //æ–­å‰‘
     public static Item icon;
-    //Ô­³õ½Úµã
+    //åŸåˆèŠ‚ç‚¹
     public static Block getSSB;
     public static Item getSSBI;
-    //Ô­³õ×ª»¯·Û
+    //åŸåˆè½¬åŒ–ç²‰
     public static Item chj;
-    //ºìÌú¶§
+    //çº¢é“é”­
     public static Item gwi;
-    //ÆÕÆÕÍ¨Í¨µÄ¶Ü
+    //æ™®æ™®é€šé€šçš„ç›¾
     public static Item superShield;
-    //Ä§Á¦ºËĞÄ
+    //é­”åŠ›æ ¸å¿ƒ
     public static Block ManaCore;
     public static Item ManaCorei;
-    //Ö½
+    //çº¸
     public static Item paper;
-    //ºìÌú½á¾§
+    //çº¢é“ç»“æ™¶
     public static Block Redic;
     public static Item RedIci;
-    //µ¶±³
+    //åˆ€èƒŒ
     public static Item Furen;
-    //Éñ½£
+    //ç¥å‰‘
     public static Item blade;
-    //µ¶ÈĞ
+    //åˆ€åˆƒ
     public static Item bladeCore;
-    //ÖäÓïÊé
+    //å’’è¯­ä¹¦
     public static Item spellBook;
-    //ÕÙ»½Ì¨
+    //å¬å”¤å°
     public static Block bossSpawner;
     public static Item bossSpawnerItem;
-    //·Ç³£Ô­Ê¼µÄĞ¡µ¶
+    //éå¸¸åŸå§‹çš„å°åˆ€
     public static Item superItem;
-    //Ä§ÕÈ
+    //é­”æ–
     public static Item wand;
-    //µ¶±ú
+    //åˆ€æŸ„
     public static Item bladeroot;
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
@@ -87,7 +87,7 @@ public class itemregister {
         inv.maxStackSize(1);
         inv.group(originalFalseGroup.my_group);
         properties.group(originalFalseGroup.my_group);
-        properties.maxStackSize(32);//ĞÂ½¨Ò»ItemµÄÊôĞÔÀà Item.Properties ÊÇItemÏÂµÄÒ»¸öÄÚ²¿Àà£¬¿ÉÒÔŞô×¡CTRL+×ó¼üµã½øÈ¥¿´¿´¾ßÌåÓĞÄÇĞ©ÊôĞÔ
+        properties.maxStackSize(32);//æ–°å»ºä¸€Itemçš„å±æ€§ç±» Item.Properties æ˜¯Itemä¸‹çš„ä¸€ä¸ªå†…éƒ¨ç±»ï¼Œå¯ä»¥æ‘ä½CTRL+å·¦é”®ç‚¹è¿›å»çœ‹çœ‹å…·ä½“æœ‰é‚£äº›å±æ€§
         Set<Item> items=new HashSet<>();
         Furen=new furen(properties);
         items.add(new netherstar_sword(properties));

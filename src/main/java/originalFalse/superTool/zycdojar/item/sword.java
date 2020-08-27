@@ -32,7 +32,7 @@ import java.util.Random;
 @Mod.EventBusSubscriber
 public class sword extends SwordItem {
     /**
-     * µ÷ÊÔ×¨ÓÃÎ±ÃüÁî
+     * è°ƒè¯•ä¸“ç”¨ä¼ªå‘½ä»¤
      * @param event
      */
     @SubscribeEvent
@@ -43,7 +43,7 @@ public class sword extends SwordItem {
                 if (content[0].equals("seed")) {
                     event.getPlayer().getHeldItem(Hand.MAIN_HAND).getOrCreateTag().put("seed", IntNBT.valueOf(Integer.parseInt(content[1])));
                     event.getPlayer().getHeldItem(Hand.MAIN_HAND).getOrCreateTag().put("designSeed", IntNBT.valueOf(Integer.parseInt(content[1])));
-                    event.getPlayer().sendMessage(new StringTextComponent("ÄãÒÑ¾­ĞŞ¸ÄÎª" + content[1]));
+                    event.getPlayer().sendMessage(new StringTextComponent("ä½ å·²ç»ä¿®æ”¹ä¸º" + content[1]));
                 }
             }
     }
@@ -53,7 +53,7 @@ public class sword extends SwordItem {
     }
 
     /**
-     * ÔÚÉËº¦±ğµÄÊµÌåµÄÊ±ºò·¢»Ó×÷ÓÃ
+     * åœ¨ä¼¤å®³åˆ«çš„å®ä½“çš„æ—¶å€™å‘æŒ¥ä½œç”¨
      * @param event
      */
     @SubscribeEvent
@@ -73,7 +73,7 @@ public class sword extends SwordItem {
     }
 
     /**
-     * Ìí¼Ó×¢ÊÍ
+     * æ·»åŠ æ³¨é‡Š
      * @param stack
      * @param worldIn
      * @param tooltip
@@ -83,7 +83,7 @@ public class sword extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         int seed = stack.getOrCreateTag().getInt("seed");
-        //ÉËº¦Ëã·¨
+        //ä¼¤å®³ç®—æ³•
         int damage = Math.abs(new Random(seed).nextInt()) % 160;
         tooltip.add(new TranslationTextComponent("originalfalse.weapon.text.damageinfo"));
         tooltip.add(new TranslationTextComponent("originalfalse.weapon.text.damage",damage));

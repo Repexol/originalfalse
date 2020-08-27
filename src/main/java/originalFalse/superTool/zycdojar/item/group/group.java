@@ -8,7 +8,7 @@ import originalFalse.zycdojar.event.registyevent.itemregister;
 import originalFalse.zycdojar.item.group.originalFalseGroup;
 
 public class group extends ItemGroup{
-    public static final ItemGroup gmy_group = new originalFalseGroup(ItemGroup.GROUPS.length, "weapon_addon");
+    public static final ItemGroup gmy_group = new group(ItemGroup.GROUPS.length, "weapon_addon");
     public group(int index, String label) {
         super(index, label);
     }

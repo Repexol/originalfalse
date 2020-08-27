@@ -4,13 +4,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
 import org.jfree.data.json.impl.JSONObject;
 import originalFalse.zycdojar.api.wrapper.RequestHandle;
 import originalFalse.zycdojar.api.wrapper.RequestManager;
 
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 /*
 请求包（客户端向服务端发送）
@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 public class requestContext {
     private JsonObject request;
     private JsonObject state;
-    private static final Logger LOGGER = Logger.getLogger(requestContext.class);
+    private static final Logger LOGGER = Logger.getLogger("requestContext");
 
     public requestContext(PacketBuffer buffer) {
         JsonParser parser=new JsonParser();

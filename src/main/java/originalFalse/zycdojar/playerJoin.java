@@ -12,7 +12,7 @@ import originalFalse.zycdojar.api.wrapper.LevelSystem;
 @Mod.EventBusSubscriber
 public class playerJoin {
     /**
-     * Ï²ÎÅÀÖ¼ûµÄ»¶Ó­Óï
+     * å–œé—»ä¹è§çš„æ¬¢è¿è¯­
      * @param event
      */
     @SubscribeEvent
@@ -20,7 +20,7 @@ public class playerJoin {
         if(!event.getWorld().isRemote){
             if(event.getEntity() instanceof PlayerEntity) {
                 LevelSystem.markSync();
-                event.getEntity().sendMessage(new StringTextComponent("»¶Ó­À´µ½Zycdojar-ÆæÃî»ÃÏëµÄÊÀ½ç"));
+                event.getEntity().sendMessage(new StringTextComponent("æ¬¢è¿æ¥åˆ°Zycdojar-å¥‡å¦™å¹»æƒ³çš„ä¸–ç•Œ"));
             }
         }
     }

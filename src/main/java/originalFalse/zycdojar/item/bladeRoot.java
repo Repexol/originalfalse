@@ -20,7 +20,7 @@ public class bladeRoot extends Item {
     }
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new StringTextComponent("2¸öÏÂ½çÖ®ĞÇ´ú±íÈÙÒ«£¬3¸öºìÌú´ú±íÑªĞÈ"));
+        tooltip.add(new StringTextComponent("2ä¸ªä¸‹ç•Œä¹‹æ˜Ÿä»£è¡¨è£è€€ï¼Œ3ä¸ªçº¢é“ä»£è¡¨è¡€è…¥"));
     }
     @Override
     public boolean equals(Object obj) {

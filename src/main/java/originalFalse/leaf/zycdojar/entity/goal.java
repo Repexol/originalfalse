@@ -4,6 +4,7 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class goal extends Goal {
@@ -26,7 +27,7 @@ public class goal extends Goal {
             if(player==null){
                 player=world.getClosestPlayer(pos.getX(),pos.getY(),pos.getZ(),10,false);
                 if(player!=null){
-                    entity.setCustomName(player.getName());
+                    entity.setCustomName(new TranslationTextComponent("originalfalse.leaf.text.isYezi"));
                 }
             }else if(player.isCreative()){
                 player=null;
@@ -36,4 +37,5 @@ public class goal extends Goal {
             }
         }
     }
+
 }

@@ -9,7 +9,7 @@ public class handle implements spellHandle {
     @Override
     public boolean spell(String spell, LivingEntity target, ServerPlayerEntity player) {
         if(spell.equals("superTool-Message")){
-            player.sendMessage(new StringTextComponent("神器拓展-安装成功"));
+            player.sendMessage(new StringTextComponent("绁炲櫒鎷撳睍-瀹夎鎴愬姛"));
             return true;
         }
         return false;

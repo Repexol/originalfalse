@@ -22,8 +22,8 @@ public class RedstoneIngot extends Item {
     }
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("ÓÃÓÚÌáÈ¡ºÏ³É³É¹û"));
-        tooltip.add(new TranslationTextComponent("¾İËµ¿ÉÒÔµÖ¿¹ÉËº¦Ó´(Á¬kill¶¼É±²»ËÀs)"));
+        tooltip.add(new TranslationTextComponent("ç”¨äºæå–åˆæˆæˆæœ"));
+        tooltip.add(new TranslationTextComponent("æ®è¯´å¯ä»¥æŠµæŠ—ä¼¤å®³å“Ÿ(è¿killéƒ½æ€ä¸æ­»s)"));
     }
     @Override
     public boolean equals(Object obj) {

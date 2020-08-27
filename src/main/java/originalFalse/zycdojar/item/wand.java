@@ -23,7 +23,7 @@ import originalFalse.zycdojar.event.dataCenter.worldSaveData;
 import java.util.*;
 
 /**
- * Ä§ÕÈ
+ * é­”æ–
  */
 public class wand extends Item {
     public static Set<spellHandle> handles=new HashSet<>();
@@ -34,7 +34,7 @@ public class wand extends Item {
     }
 
     /**
-     * ÓÒ¼ü
+     * å³é”®
      * @param worldIn
      * @param playerIn
      * @param handIn
@@ -43,28 +43,28 @@ public class wand extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if(!worldIn.isRemote){
-            //²éÑ¯Íæ¼ÒÑ¡ÔñµÄÄ§Öä
+            //æŸ¥è¯¢ç©å®¶é€‰æ‹©çš„é­”å’’
             String spell=chooseSpell.get(playerIn.getUniqueID().toString());
             if(spell==null){
                 spell="null";
             }
             if(playerIn.isSneaking()){
-                //Èç¹ûÍæ¼ÒÊÇ¶××ÅµÄ£¬ÄÇÃ´Ëæ»úÑ¡ÔñÄ§Öä
+                //å¦‚æœç©å®¶æ˜¯è¹²ç€çš„ï¼Œé‚£ä¹ˆéšæœºé€‰æ‹©é­”å’’
                 spell=randomChooseSpell(playerIn,worldIn);
                 chooseSpell.put(playerIn.getUniqueID().toString(),spell);
             }else {
-                //Íæ¼Ò×îºóÒ»´Î¹¥»÷µÄ¹ÖÎï
+                //ç©å®¶æœ€åä¸€æ¬¡æ”»å‡»çš„æ€ªç‰©
                 LivingEntity entity=playerIn.getLastAttackedEntity();
-                //Èç¹ûÃ»ÓĞ
-                //ÄÇÃ´Ä¿±ê¾ÍÊÇÍæ¼Ò×Ô¼º
+                //å¦‚æœæ²¡æœ‰
+                //é‚£ä¹ˆç›®æ ‡å°±æ˜¯ç©å®¶è‡ªå·±
                 if(entity==null){
                     entity=playerIn;
                 }
-                //³¢ÊÔÔÚÒÑÖªÄ§ÖäÀïÕÒ
+                //å°è¯•åœ¨å·²çŸ¥é­”å’’é‡Œæ‰¾
                 if(spell.equals("null")){
                     playerIn.sendMessage(new TranslationTextComponent("originalfalse.text.pchangespell"));
                 }else if(spell.equals("test")){
-                    playerIn.sendMessage(new StringTextComponent("²âÊÔ·¨Êõ"));
+                    playerIn.sendMessage(new StringTextComponent("æµ‹è¯•æ³•æœ¯"));
                 }else if(spell.equals("wither")){
                     if(LevelSystem.removeMana(playerIn,40,worldIn)) {
                         entity.addPotionEffect(new EffectInstance(Effects.WITHER, 15, 4));
@@ -75,7 +75,7 @@ public class wand extends Item {
                     }
                 }
                 else{
-                    //ÕÒ²»µ½¾Íµ½handleÀïÕÒ
+                    //æ‰¾ä¸åˆ°å°±åˆ°handleé‡Œæ‰¾
                     boolean b=false;
                     for(spellHandle handle:handles){
                         if(handle.spell(spell, entity,(ServerPlayerEntity) playerIn)){
@@ -83,9 +83,9 @@ public class wand extends Item {
                             break;
                         }
                     }
-                    //ÊµÔÚÕÒ²»µ½ÄÇÃ´¾Í±¨´í
+                    //å®åœ¨æ‰¾ä¸åˆ°é‚£ä¹ˆå°±æŠ¥é”™
                     if(!b){
-                        playerIn.sendMessage(new StringTextComponent("´íÎó£ºÎ´¿ÉÓÃ·¨Êõ£»ÄãÊÇ·ñÉ¾³ıÁË¸½Êô/¸½Êôbug£¿"));
+                        playerIn.sendMessage(new StringTextComponent("é”™è¯¯ï¼šæœªå¯ç”¨æ³•æœ¯ï¼›ä½ æ˜¯å¦åˆ é™¤äº†é™„å±/é™„å±bugï¼Ÿ"));
                     }
                 }
             }
@@ -94,14 +94,14 @@ public class wand extends Item {
     }
 
     /**
-     * Ëæ»úÑ¡ÔñÄ§Öä
+     * éšæœºé€‰æ‹©é­”å’’
      * @param entity
      * @param worldIn
      * @return
      */
     private static String randomChooseSpell(PlayerEntity entity,World worldIn){
         worldSaveData data=worldSaveData.get(worldIn);
-        //Ä§ÖäÁĞ±í
+        //é­”å’’åˆ—è¡¨
         if(data.getSpell(entity).isEmpty()){
             return "null";
         }

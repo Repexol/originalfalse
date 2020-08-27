@@ -12,8 +12,8 @@ import originalFalse.tech.zycdojar.client.block.wuzhongshenyouyishi;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class main {
     /**
-     * ¿Í»§¶ËäÖÈ¾ÉèÖÃ
-     * ÏêÇéhttps://neutrino.v2mcdev.com/specialrender/ter.html
+     * å®¢æˆ·ç«¯æ¸²æŸ“è®¾ç½®
+     * è¯¦æƒ…https://neutrino.v2mcdev.com/specialrender/ter.html
      * @param event
      */
     @SubscribeEvent

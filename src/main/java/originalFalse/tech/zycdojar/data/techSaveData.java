@@ -15,10 +15,10 @@ import java.util.Map;
 /**
  * @deprecated
  * worldSavedData
- * Ïê¼ûhttps://neutrino.v2mcdev.com/worldsaveddata/example.html
- * nat¾ÍÊÇ×ÔÈ»Ö®Ï¢
- * ²»ÍÆ¼öÓÃÕâÀïµÄ·½·¨
- * ÍÆ¼öÓÃNESystemµÄ·½·¨
+ * è¯¦è§https://neutrino.v2mcdev.com/worldsaveddata/example.html
+ * natå°±æ˜¯è‡ªç„¶ä¹‹æ¯
+ * ä¸æ¨èç”¨è¿™é‡Œçš„æ–¹æ³•
+ * æ¨èç”¨NESystemçš„æ–¹æ³•
  */
 public class techSaveData extends WorldSavedData {
     private final Map<String,Integer> playerNat=new HashMap<>();
@@ -27,7 +27,7 @@ public class techSaveData extends WorldSavedData {
     }
 
     /**
-     * »ñÈ¡Íæ¼ÒµÄ×ÔÈ»Ö®Ï¢
+     * è·å–ç©å®¶çš„è‡ªç„¶ä¹‹æ¯
      * @param player
      * @return
      */
@@ -41,7 +41,7 @@ public class techSaveData extends WorldSavedData {
     }
 
     /**
-     * ÉèÖÃÍæ¼ÒµÄ×ÔÈ»Ö®Ï¢
+     * è®¾ç½®ç©å®¶çš„è‡ªç„¶ä¹‹æ¯
      * @param player
      * @param amount
      */
@@ -55,7 +55,7 @@ public class techSaveData extends WorldSavedData {
     }
 
     /**
-     * ¶ÁĞ´nbt
+     * è¯»å†™nbt
      * @param nbt
      */
     @Override
@@ -82,7 +82,7 @@ public class techSaveData extends WorldSavedData {
         return compound;
     }
     /**
-     * Õâ¸ö¶«Î÷²»ÄÜÖ±½Ónew£¬ÒªgetInstance;
+     * è¿™ä¸ªä¸œè¥¿ä¸èƒ½ç›´æ¥newï¼Œè¦getInstance;
      * @param worldIn
      * @return
      */
@@ -96,8 +96,8 @@ public class techSaveData extends WorldSavedData {
             worldSaveData.overWorld=world;
         }
         /***
-         *   Èç¹ûÄãĞèÒªÃ¿¸öÎ³¶È¶¼ÓĞÒ»¸ö×Ô¼ºµÄWorld Saved Data¡£
-         *  ÓÃ ServerWorld world = (ServerWorld)world; ´úÌæÉÏÃæÄÇ¾ä¡£
+         *   å¦‚æœä½ éœ€è¦æ¯ä¸ªçº¬åº¦éƒ½æœ‰ä¸€ä¸ªè‡ªå·±çš„World Saved Dataã€‚
+         *  ç”¨ ServerWorld world = (ServerWorld)world; ä»£æ›¿ä¸Šé¢é‚£å¥ã€‚
          */
         DimensionSavedDataManager storage = world.getSavedData();
         return storage.getOrCreate(() -> {

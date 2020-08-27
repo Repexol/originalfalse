@@ -15,8 +15,8 @@ import originalFalse.zycdojar.api.wrapper.spellHandle;
 
 public class spell implements spellHandle {
     /**
-     * ÖäÓïÖ´ĞĞ
-     * ×Ô¶¨ÒåµÄapi
+     * å’’è¯­æ‰§è¡Œ
+     * è‡ªå®šä¹‰çš„api
      * @param spell
      * @param target
      * @param player
@@ -24,12 +24,12 @@ public class spell implements spellHandle {
      */
     @Override
     public boolean spell(String spell, LivingEntity target, ServerPlayerEntity player) {
-        //²âÊÔÖäÓï
+        //æµ‹è¯•å’’è¯­
         if(spell.equals("tech-test")){
-            player.sendMessage(new StringTextComponent("Äã³É¹¦°²×°ÁËof¿Æ¼¼ÍØÕ¹"));
+            player.sendMessage(new StringTextComponent("ä½ æˆåŠŸå®‰è£…äº†ofç§‘æŠ€æ‹“å±•"));
             return true;
         }else if(spell.equals("AngerOfNatural")){
-            //×ÔÈ»Ö®Å­
+            //è‡ªç„¶ä¹‹æ€’
             if(NESystem.removeNE(player,10)) {
                 LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(target.getEntityWorld(), target.getPosX(), target.getPosY(), target.getPosZ(), false);
                 lightningBoltEntity.setFire(999);
@@ -40,7 +40,7 @@ public class spell implements spellHandle {
             }
             return true;
         }else if(spell.equals("scan")){
-            //É¨Ãè£¨Î´Íê³É£©
+            //æ‰«æï¼ˆæœªå®Œæˆï¼‰
             RayTraceResult result=player.getServerWorld().rayTraceBlocks(new RayTraceContext(player.getPositionVec().add(0,1,0),player.getLookVec(), RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE,player));
             Vec3d obj=result.getHitVec();
             BlockPos pos=new BlockPos(obj.getX(),obj.getY(),obj.getZ());

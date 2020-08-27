@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 import java.util.UUID;
 
 /**
- * ´«ËÍÒÇ
+ * ä¼ é€ä»ª
  */
 public class teleporter extends Block {
     public teleporter() {
@@ -58,28 +58,28 @@ public class teleporter extends Block {
                 }
             } else {
                 if(!tile.getTileData().getString("player").equals("")) {
-                    //²éÕÒ´«ËÍÒÇÖ÷ÈË
+                    //æŸ¥æ‰¾ä¼ é€ä»ªä¸»äºº
                     PlayerEntity TargetPlayer=worldIn.getPlayerByUuid(UUID.fromString(tile.getTileData().getString("player")));
                     if(TargetPlayer!=null) {
-                        //ÏûºÄµçÁ¿¿çÎ³¶È
+                        //æ¶ˆè€—ç”µé‡è·¨çº¬åº¦
                         if(!TargetPlayer.getEntityWorld().getDimension().getType().equals(worldIn.getDimension().getType())){
                             if(NESystem.removeNE(TargetPlayer,100))
                             TargetPlayer.changeDimension(worldIn.getDimension().getType());
                         }
-                        //ÏûºÄµçÁ¿´«ËÍ
+                        //æ¶ˆè€—ç”µé‡ä¼ é€
                         if(NESystem.removeNE(TargetPlayer,10)) {
                             //TargetPlayer.setPosition(pos.getX(),pos.getY()+1,pos.getZ());
                             TargetPlayer.attemptTeleport(pos.getX()-0.5, pos.getY() + 2, pos.getZ()-0.5, true);
                             TargetPlayer.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
-                            TargetPlayer.sendMessage(new StringTextComponent("ÄãÒÑ¾­´«ËÍÖÁ" + pos.getX() + " " + pos.getY() + 2 + " " + pos.getZ()));
+                            TargetPlayer.sendMessage(new StringTextComponent("ä½ å·²ç»ä¼ é€è‡³" + pos.getX() + " " + pos.getY() + 2 + " " + pos.getZ()));
                             player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.success"));
                         }
                     }else {
-                        //Íæ¼ÒÀëÏß
+                        //ç©å®¶ç¦»çº¿
                         player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.offline"));
                     }
                 }else {
-                    //Ã»ÓĞÖ÷ÈË
+                    //æ²¡æœ‰ä¸»äºº
                     player.sendMessage(new TranslationTextComponent("originalfalse.tech.text.pleaseSetOwner"));
                 }
             }

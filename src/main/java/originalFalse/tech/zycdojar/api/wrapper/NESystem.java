@@ -48,7 +48,7 @@ public class NESystem {
      */
     public static void grantNE(String uuid,int amount){
         techSaveData data=techSaveData.getInstance(worldSaveData.overWorld);
-        if(data.getNat(uuid)<=1000) {
+        if(data.getNat(uuid)<1000000) {
             data.putNat(uuid, data.getNat(uuid) + amount);
         }
         LevelSystem.markSync();

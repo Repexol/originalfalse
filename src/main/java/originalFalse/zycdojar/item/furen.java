@@ -19,9 +19,9 @@ public class furen extends Item{
     }
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new StringTextComponent("°ÑºìÌúÔÒ³É½á¾§£¬»áÉ¥Ê§µô8³É¡£"));
-        tooltip.add(new StringTextComponent("Á½¿é½á¾§ÈÚºÏ£¬Şô£¬ÕâÓ²¶È²»´í¡£"));
-        tooltip.add(new StringTextComponent("×¢ÈëÁ½ÌõÁúµ°£¬ÕæºÃ£¬¿ÉÊÇÄÃ²»¶¯¡£"));
-        tooltip.add(new StringTextComponent("ÎÒÏë£ºÒ²ĞíÓ¦¸Ã¹üÉÏÒ»È¦Ä¾°å¡£"));
+        tooltip.add(new StringTextComponent("æŠŠçº¢é“ç ¸æˆç»“æ™¶ï¼Œä¼šä¸§å¤±æ‰8æˆã€‚"));
+        tooltip.add(new StringTextComponent("ä¸¤å—ç»“æ™¶èåˆï¼Œæ‘ï¼Œè¿™ç¡¬åº¦ä¸é”™ã€‚"));
+        tooltip.add(new StringTextComponent("æ³¨å…¥ä¸¤æ¡é¾™è›‹ï¼ŒçœŸå¥½ï¼Œå¯æ˜¯æ‹¿ä¸åŠ¨ã€‚"));
+        tooltip.add(new StringTextComponent("æˆ‘æƒ³ï¼šä¹Ÿè®¸åº”è¯¥è£¹ä¸Šä¸€åœˆæœ¨æ¿ã€‚"));
     }
 }

@@ -30,7 +30,7 @@ public class adminTool {
     }
 
     /**
-     * ÓÒ¼üÉı¼¶
+     * å³é”®å‡çº§
      * @param event
      */
     @SubscribeEvent
@@ -40,13 +40,13 @@ public class adminTool {
             if(event.getPlayer().getHeldItem(Hand.MAIN_HAND).getItem().equals(itemregister.icon)) {
                 worldSaveData data = worldSaveData.get(event.getWorld());
                 data.setLevel(event.getPlayer(), data.getLevel(event.getPlayer()) + 1);
-                event.getPlayer().sendMessage(new StringTextComponent("ÄãµÄµÈ¼¶ÏÖÔÚÊÇ" + data.getLevel(event.getPlayer())));
+                event.getPlayer().sendMessage(new StringTextComponent("ä½ çš„ç­‰çº§ç°åœ¨æ˜¯" + data.getLevel(event.getPlayer())));
             }
         }
     }
 
     /**
-     * ·ÀÓù
+     * é˜²å¾¡
      * @param event
      */
     @SubscribeEvent
@@ -61,7 +61,7 @@ public class adminTool {
     }
 
     /**
-     * ÎŞÏŞÉËº¦
+     * æ— é™ä¼¤å®³
      * @param event
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
@@ -76,18 +76,18 @@ public class adminTool {
 
                 if(entity.isSneaking()){
                     event.getTarget().onKillCommand();
-                    event.getPlayer().sendMessage(new StringTextComponent("ÒÑÔì³ÉÎŞÏŞÉËº¦"));
+                    event.getPlayer().sendMessage(new StringTextComponent("å·²é€ æˆæ— é™ä¼¤å®³"));
                 }else {
                     event.getTarget().attackEntityFrom(DamageSource.OUT_OF_WORLD,Float.MAX_VALUE);
                 }
                 /*if (attacker.equalsIgnoreCase("Zycddj") || attacker.equalsIgnoreCase("Dev")) {
-                    entity.sendMessage(new StringTextComponent("¶ÏÈĞ:ÒÑÇå³ı£¡"));
+                    entity.sendMessage(new StringTextComponent("æ–­åˆƒ:å·²æ¸…é™¤ï¼"));
                     event.getTarget().onKillCommand();
                 } else if (event.getPlayer().getHeldItem(Hand.MAIN_HAND).getDamage() == 1) {
                     event.getTarget().onKillCommand();
                     event.setCanceled(true);
                 }*//*else{
-                    entity.sendMessage(new StringTextComponent("Õâ°Ñ½£²»ÊôÓÚÄã£¡"));
+                    entity.sendMessage(new StringTextComponent("è¿™æŠŠå‰‘ä¸å±äºä½ ï¼"));
                     event.setCanceled(true);
                     event.getTarget().setMotion(event.getTarget().getPosX(),event.getTarget().getPosY()+20,event.getTarget().getPosZ());
                 }*/
