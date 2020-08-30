@@ -11,11 +11,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import originalFalse.tech.zycdojar.block.*;
 import originalFalse.tech.zycdojar.block.tile.*;
 import originalFalse.tech.zycdojar.block.xukongjinshudabaifadianji;
-import originalFalse.tech.zycdojar.item.NEShied;
+import originalFalse.tech.zycdojar.item.*;
 import originalFalse.tech.zycdojar.item.group.theGroup;
-import originalFalse.tech.zycdojar.item.pearl;
-import originalFalse.tech.zycdojar.item.voidMeterial;
-import originalFalse.tech.zycdojar.item.voidShied;
 import originalFalse.zycdojar.api.wrapper.MessageManager;
 import originalFalse.zycdojar.api.wrapper.SpellManager;
 
@@ -24,6 +21,11 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class main {
+    //凋零苹果
+    public static Item witherApple;
+    //法杖
+    public static Item staff;
+    public static Item staffPiece;
     //自然之息注入仪
     public static Block dengjiajiaohuanyi;
     public static Item dengjiajiaohuanyiI;
@@ -67,11 +69,15 @@ public class main {
         Item.Properties properties2=new Item.Properties();
         properties2.group(theGroup.gmy_group);
         properties2.maxDamage(666);
-
         lightingI=new BlockItem(lighting,properties).setRegistryName("lighting");
         neshied=new NEShied(properties2);
         Set<Item> items=new HashSet<>();
-
+        staff=new staff(properties2);
+        witherApple=new NEFood();
+        items.add(witherApple);
+        staffPiece=new staff_piece(properties);
+        items.add(staff);
+        items.add(staffPiece);
         items.add(neshied);
         items.add(lightingI);
         voidshied=new voidShied(properties2);

@@ -21,8 +21,7 @@ public class shadow extends MobRenderer<leaf, PlayerModel<leaf>> {
     public ResourceLocation getEntityTexture(leaf entity) {
         //Minecraft.getInstance().player.get
         ResourceLocation resourceLocation = DefaultPlayerSkin.getDefaultSkin(Minecraft.getInstance().player.getUniqueID());
-        if (resourceLocation != null)
-            return resourceLocation;
+        //if (resourceLocation != null) return resourceLocation;
         return new ResourceLocation("originalfalse", "textures/entity/leaf.png");
     }
 

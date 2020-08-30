@@ -58,12 +58,12 @@ public class spellStuder extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn,PlayerEntity playerIn, Hand handIn) {
         if(!worldIn.isRemote) {
             worldSaveData data = worldSaveData.getInstance(worldIn);
-            String spell=playerIn.getHeldItem(Hand.MAIN_HAND).getTag().getString("spellbook");
+            String spell=playerIn.getHeldItem(handIn).getTag().getString("spellbook");
             //创造拿出的咒语书是没有咒语的，默认是测试咒语
             if(spell==null){
                 spell="test";
             }
-            if(data.study(playerIn, spell))playerIn.getHeldItem(Hand.MAIN_HAND).setCount(playerIn.getHeldItem(Hand.MAIN_HAND).getCount()-1);
+            if(data.study(playerIn, spell))playerIn.getHeldItem(Hand.MAIN_HAND).setCount(playerIn.getHeldItem(handIn).getCount()-1);
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }

@@ -23,6 +23,7 @@ import originalFalse.nuclearCraft.block.nuclearTile;
 import originalFalse.nuclearCraft.block.warm;
 import originalFalse.nuclearCraft.gui.nuclearScreen;
 import originalFalse.nuclearCraft.gui.nuclearui;
+import originalFalse.nuclearCraft.item.battery;
 import originalFalse.nuclearCraft.item.nuclearDefender;
 import originalFalse.tech.zycdojar.item.group.theGroup;
 
@@ -32,6 +33,7 @@ public class main {
     public static Item nuclearI;
     public static originalFalse.nuclearCraft.block.fan fan;
     public static Item fanI;
+    public static battery Battery;
     public static Item ncdef;
     public static warm Warm;
     public static Item warmi;
@@ -62,12 +64,14 @@ public class main {
         Item.Properties properties2=new Item.Properties();
         properties2.group(theGroup.gmy_group);
         properties2.maxDamage(666);
+        Battery=new battery(properties2);
         warmi=new BlockItem(Warm,properties).setRegistryName(Warm.getRegistryName());
         ncdef=new nuclearDefender(properties2);
         fanI=new BlockItem(fan,properties).setRegistryName(fan.getRegistryName());
         nuclearI=new BlockItem(nuclear,properties).setRegistryName(nuclear.getRegistryName());
         registry.register(nuclearI);
         registry.register(warmi);
+        registry.register(Battery);
         registry.register(ncdef);
         registry.register(fanI);
     }

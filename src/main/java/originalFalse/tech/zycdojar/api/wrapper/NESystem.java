@@ -10,6 +10,10 @@ import originalFalse.zycdojar.event.dataCenter.worldSaveData;
  */
 public class NESystem {
     /**
+     * 自然之息最大值
+     */
+    public static final int MAX_NE=1000000;
+    /**
      * 获取玩家自然之息值
      * @param player
      * @return 自然之息值
@@ -35,8 +39,11 @@ public class NESystem {
      */
     public static void grantNE(PlayerEntity playerEntity,int amount){
         techSaveData data=techSaveData.getInstance(worldSaveData.overWorld);
-        if(data.getNat(playerEntity)<1000) {
+        if(data.getNat(playerEntity)<MAX_NE) {
             data.putNat(playerEntity, data.getNat(playerEntity) + amount);
+        }
+        if(data.getNat(playerEntity)>MAX_NE){
+            data.putNat(playerEntity,MAX_NE);
         }
         LevelSystem.markSync();
     }
@@ -48,8 +55,11 @@ public class NESystem {
      */
     public static void grantNE(String uuid,int amount){
         techSaveData data=techSaveData.getInstance(worldSaveData.overWorld);
-        if(data.getNat(uuid)<1000000) {
+        if(data.getNat(uuid)<MAX_NE) {
             data.putNat(uuid, data.getNat(uuid) + amount);
+        }
+        if(data.getNat(uuid)>MAX_NE){
+            data.putNat(uuid,MAX_NE);
         }
         LevelSystem.markSync();
     }

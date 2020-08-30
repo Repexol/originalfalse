@@ -162,3 +162,10 @@ publishing {
         }
     }
 }
+task getLibs(type:Copy) {
+
+    from configurations.runtime
+
+    into 'libraries' // Ä¿±êÎ»ÖÃ
+
+}

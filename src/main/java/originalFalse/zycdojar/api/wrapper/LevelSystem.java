@@ -59,7 +59,7 @@ public class LevelSystem {
         if(event.side== LogicalSide.SERVER) {
             if (worldSaveData.overWorld == null) {
             } else {
-                if ((Math.abs(new Random().nextInt()) % 100) >= 98)
+                if ((Math.abs(new Random().nextInt()) % 500) >= 498)
                     tick(worldSaveData.overWorld);
                 if (ticks == 5) {
                     if (markSync) {
@@ -166,8 +166,10 @@ public class LevelSystem {
             entity.setHealth(entity.getHealth()-5);
             entity.sendMessage(new TranslationTextComponent("originalfalse.text.yourMoLiIsTouZhiIng"));
             LevelSystem.mana.put(entity.getUniqueID().toString(),0);
+            markSync();
             return false;
         }
+
     }
 
     /**
@@ -180,6 +182,7 @@ public class LevelSystem {
             if(!(mana.get(a)>=20+(data.level.get(a)*10)))
             mana.put(a,mana.get(a)+1);
         }
+        markSync();
     }
 
     /**

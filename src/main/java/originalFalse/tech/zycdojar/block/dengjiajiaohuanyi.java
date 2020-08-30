@@ -23,6 +23,7 @@ import originalFalse.tech.zycdojar.block.tile.dengjiajiaohuanyiTile;
 import originalFalse.tech.zycdojar.block.tile.lightingTile;
 import originalFalse.tech.zycdojar.main;
 import originalFalse.zycdojar.event.registyevent.itemregister;
+import originalFalse.zycdojar.skybiome.skyBiome;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -104,6 +105,15 @@ public class dengjiajiaohuanyi extends Block {
                                         result.put("mana", 200);
                                         result.put("stack", new ItemStack(main.teleporterI, 1));
                                         throw new gotoExcaption(result);
+                                    }
+                                    else if(map.getOrDefault(Items.DIRT,0)==2){
+                                        if(worldIn.getBiome(pos) instanceof skyBiome) {
+                                            //彩蛋物品：凋零苹果
+                                            Map result = new HashMap();
+                                            result.put("mana", 200);
+                                            result.put("stack", new ItemStack(main.witherApple, 1));
+                                            throw new gotoExcaption(result);
+                                        }
                                     }
                                 }catch (gotoExcaption excaption){
                                     //通过excaption跳转

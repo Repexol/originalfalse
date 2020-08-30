@@ -99,7 +99,7 @@ public class wand extends Item {
      * @param worldIn
      * @return
      */
-    private static String randomChooseSpell(PlayerEntity entity,World worldIn){
+    public static String randomChooseSpell(PlayerEntity entity, World worldIn){
         worldSaveData data=worldSaveData.get(worldIn);
         //魔咒列表
         if(data.getSpell(entity).isEmpty()){

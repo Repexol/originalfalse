@@ -82,6 +82,7 @@
   "originalfalse.tech.text.noOwner": "请确定自然之息宝珠的主人",
   "originalfalse.tech.text.offline": "玩家已下线",
   "originalfalse.tech.text.noNE": "自然之息不足",
+  "item.originalfalse.wither_apple": "凋零苹果",
   "originalfalse.tech.text.vshied": "可抵挡一切伤害（不消耗）",
   "originalfalse-tech-addon-start-end": "end",
   "originalfalse-tool-addon-nethercraft": "start",
@@ -101,6 +102,13 @@
   "block.originalfalse.nuclear_core": "核电核心",
   "block.originalfalse.fan": "散热扇",
   "block.originalfalse.warm": "恒温仪",
+  "originalfalse.nuclearcraft.text.battery": "自然之息：%s(最大:10000)",
+  "originalfalse.nuclearcraft.text.batteryRemove": "已储存%d点自然之息",
+  "originalfalse.nuclearcraft.text.batteryGrant": "提取了%d点自然之息",
   "item.originalfalse.nc_def": "辐射护身符",
-  "originalfalse-tool-addon-nuclear-end": "end"
+  "item.originalfalse.battery": "电池",
+  "originalfalse-tool-addon-nuclear-end": "end",
+  "other": "start",
+  "block.originalfalse.leaf_spawner": "生成方块",
+  "others": "end"
 }
