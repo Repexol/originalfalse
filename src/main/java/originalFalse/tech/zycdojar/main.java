@@ -45,6 +45,12 @@ public class main {
     //传送仪
     public static Block teleporter;
     public static Item teleporterI;
+    //电线
+    public static Block wire;
+    public static Item wireI;
+    //电线
+    public static Block cele;
+    public static Item celeI;
     //无中生有仪式
     public static Block wuzhongshenyouyishi;
     public static Item wuzhongshenyouyishiI;
@@ -90,6 +96,10 @@ public class main {
         wuzhongshenyouyishiI=new BlockItem(wuzhongshenyouyishi,properties).setRegistryName("wu_zhong_shen_you_yi_shi");
         items.add(wuzhongshenyouyishiI);
         items.add(dengjiajiaohuanyiI);
+        wireI=new BlockItem(wire,properties).setRegistryName(wire.getRegistryName());
+        items.add(wireI);
+        celeI=new BlockItem(cele,properties).setRegistryName(cele.getRegistryName());
+        items.add(celeI);
         skjsdbfdj=new BlockItem(xukongjinshudabaifadianji,properties).setRegistryName(xukongjinshudabaifadianji.getRegistryName());
         items.add(skjsdbfdj);
         items.add(voidMeterial);
@@ -113,6 +123,10 @@ public class main {
         properties2.group(theGroup.gmy_group);
         properties2.maxDamage(666);
         Set<Block> items=new HashSet<>();
+        wire=new wire();
+        cele=new createEle();
+        items.add(cele);
+        items.add(wire);
         if(dengjiajiaohuanyi==null) {
             dengjiajiaohuanyi = new dengjiajiaohuanyi();
             dengjiajiaohuanyiI = new BlockItem(dengjiajiaohuanyi, properties).setRegistryName(dengjiajiaohuanyi.getRegistryName());
@@ -139,6 +153,8 @@ public class main {
         tileEntityTypes.add(dengjiajiaohuanyiTile.type);
         tileEntityTypes.add(teleporterTile.type);
         tileEntityTypes.add(lightingTile.type);
+        tileEntityTypes.add(createEleTile.type);
+        tileEntityTypes.add(wireTile.type);
         tileEntityTypes.add(mawoderendoushidashabi.type);
         tileEntityTypes.add(originalFalse.tech.zycdojar.block.tile.xukongjinshudabaifadianji.type);
         for(TileEntityType<?> type:tileEntityTypes){

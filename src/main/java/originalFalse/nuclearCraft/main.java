@@ -24,6 +24,7 @@ import originalFalse.nuclearCraft.block.warm;
 import originalFalse.nuclearCraft.gui.nuclearScreen;
 import originalFalse.nuclearCraft.gui.nuclearui;
 import originalFalse.nuclearCraft.item.battery;
+import originalFalse.nuclearCraft.item.ncCore;
 import originalFalse.nuclearCraft.item.nuclearDefender;
 import originalFalse.tech.zycdojar.item.group.theGroup;
 
@@ -37,6 +38,7 @@ public class main {
     public static Item ncdef;
     public static warm Warm;
     public static Item warmi;
+    public static Item nccore;
     @SubscribeEvent
     public static void setup(FMLCommonSetupEvent event){
     }
@@ -65,6 +67,8 @@ public class main {
         properties2.group(theGroup.gmy_group);
         properties2.maxDamage(666);
         Battery=new battery(properties2);
+        nccore=new ncCore(properties);
+        registry.register(nccore);
         warmi=new BlockItem(Warm,properties).setRegistryName(Warm.getRegistryName());
         ncdef=new nuclearDefender(properties2);
         fanI=new BlockItem(fan,properties).setRegistryName(fan.getRegistryName());

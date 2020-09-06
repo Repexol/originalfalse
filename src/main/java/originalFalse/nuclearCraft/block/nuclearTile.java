@@ -30,7 +30,10 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import originalFalse.common.debuger;
+import originalFalse.common.eleSystem.eleMeter;
+import originalFalse.common.eleSystem.eleProv;
 import originalFalse.nuclearCraft.gui.nuclearui;
+import originalFalse.nuclearCraft.item.ncCore;
 import originalFalse.nuclearCraft.main;
 import originalFalse.tech.zycdojar.api.wrapper.NESystem;
 import originalFalse.tech.zycdojar.item.pearl;
@@ -40,7 +43,7 @@ import originalFalse.zycdojar.item.GWingIngot;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class nuclearTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
+public class nuclearTile extends eleMeter implements ITickableTileEntity, INamedContainerProvider, eleProv {
     public double hot=1;
     public double realengry=0.0;
     public double stable=1.0;
@@ -104,8 +107,9 @@ public class nuclearTile extends TileEntity implements ITickableTileEntity, INam
                             hot -= (hot / 10);
                         }
                     } else {
-                        if (inventory.getStackInSlot(0).getItem() instanceof pearl) {
-                            if (!inventory.getStackInSlot(0).getTag().getString("owner").equals("")) {
+                        if ((inventory.getStackInSlot(0).getItem() instanceof pearl)||(inventory.getStackInSlot(0).getItem() instanceof ncCore)) {
+                            if ((!inventory.getStackInSlot(0).getOrCreateTag().getString("owner").equals(""))||
+                                    (inventory.getStackInSlot(0).getItem() instanceof ncCore)) {
                                 //debuger.sendMessage(new StringTextComponent((0.5 * hot) * (65 - fuelcount) - stablecount + ""));
                                 engry = (int) Math.max(0, (0.5 * hot) * (65 - fuelcount) - stablecount);
                                 realengry = (0.5 * hot) * (65 - fuelcount) - stablecount;
@@ -118,7 +122,10 @@ public class nuclearTile extends TileEntity implements ITickableTileEntity, INam
                                     }
                                 }
                                 if (ticker3 >= 10) {
+                                    if(inventory.getStackInSlot(0).getItem() instanceof pearl)
                                     NESystem.grantNE(inventory.getStackInSlot(0).getTag().getString("owner"), engry);
+                                    else
+                                        ele+=engry;
                                     double rhot=engry/50.0;
                                     for(int i=1;i<=check();i++){
                                         rhot/=10.0;
@@ -132,6 +139,9 @@ public class nuclearTile extends TileEntity implements ITickableTileEntity, INam
                         }else if(inventory.getStackInSlot(0).getItem().equals(Items.COAL)){
                             hot+=1;
                             inventory.getStackInSlot(0).setCount(inventory.getStackInSlot(0).getCount()-1);
+                        }else if(inventory.getStackInSlot(0).getItem().equals(Items.WATER_BUCKET)){
+                            hot-=1;
+                            inventory.setInventorySlotContents(0,new ItemStack(Items.BUCKET));
                         }else{
                             /*if(hot>1){
                                 hot-=(hot/10.0);
@@ -181,6 +191,11 @@ public class nuclearTile extends TileEntity implements ITickableTileEntity, INam
         this.stable=compound.getDouble("stab");
         ticker=compound.getInt("ticker");
     }
+
+    @Override
+    protected void onTick() {
+    }
+
     @Override
     public void read(CompoundNBT compound) {
         inventory.setInventorySlotContents(0,ItemStack.read(compound.getCompound("doYouLikeEatingOuLiGei")));
@@ -191,11 +206,21 @@ public class nuclearTile extends TileEntity implements ITickableTileEntity, INam
     }
 
     @Override
+    protected int getEleMax() {
+        return 1000;
+    }
+
+    @Override
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("fuel",inventory.getStackInSlot(1).copy().serializeNBT());
         compound.put("stabilizer",inventory.getStackInSlot(2).copy().serializeNBT());
         compound.put("doYouLikeEatingOuLiGei",inventory.getStackInSlot(0).copy().serializeNBT());
         compound.put("hot", DoubleNBT.valueOf(hot));
         return super.write(compound);
+    }
+
+    @Override
+    public boolean canGive(int thatEle) {
+        return ele>0;
     }
 }
